@@ -1,0 +1,55 @@
+<html>
+<head>
+    <title>
+        Rent Cafe
+    </title>
+    <link rel="stylesheet" href="form.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container_form">
+        <div class="form_left col-sm-0 col-md-6 col-6">
+            <img src="logoImage.svg" width="420px" height="470px">
+        </div>
+        <div class="form_right col-sm-12 col-md-6 col-6">
+            <h2>REGISTRATION</h2>
+            <form action="" method="POST">
+                <br>
+                <label for="fn">Name</label>
+                <input type="text" name="fn" id="fn" placeholder="First Name" autofocus autocomplete="OFF" >
+                <br><br>
+                <label for="ln">Email</label>
+                <input type="text" name="em" id="ln" placeholder="Email"  autocomplete="OFF">
+                <br><br>
+                <label for="gender">Gender</label>&emsp;
+                <label class="rad">
+                    <input type="radio"  name="gender">
+                    &emsp;<span class="checkmark"></span>
+                </label><span class="rad_label">Male</span>&emsp;
+                <label class="rad">
+                    <input type="radio"  name="gender">
+                    &emsp;<span class="checkmark"></span>
+                </label><span class="rad_label">Female</span>
+                <!-- <label class="rad">One
+                    <input type="radio" checked="checked" name="gender">
+                    <span class="checkmark"></span>
+                </label> -->
+                <br><br>
+                <label for="dob">Date of Birth</label>
+                <input type="Date" name="dob" id="dob"  autocomplete="OFF"> 
+                <br><br>
+                <label for="pn">Phone</label>
+                <input type="number" maxlength="10" minlength="10" name="pn" id="pn" placeholder="Phone     " autocomplete="OFF">
+                <br><br>
+                <label for="fn">City</label>
+                <input type="text" name="city" id="city" placeholder="City" autofocus autocomplete="OFF" >
+                <br><br>
+                <div class="subm">
+                    <button type="button" class="btn btn-danger cl">Clear</button>&emsp;&emsp;
+                    <button type="button" class="btn btn-primary cl">Submit</button>
+                </div>
+            </form> 
+        </div>
+    </div>
+</body>
+</html>
