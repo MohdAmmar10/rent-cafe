@@ -20,11 +20,7 @@ body{
 }
 .form_left {
     flex: 1;
-    padding-left: 50px;
-	padding-top: 20px;
-	padding-bottom: 20px;
-	padding-right: 10px;
-    
+    padding: 10px 20px 50px 20px;
 }
 
 .form_right {
@@ -54,6 +50,7 @@ input[type=email],input[type=password] {
     padding: 10px;
     background-color: #f1f1f1;
     border-radius: 10px;
+    display: inline-block;
 }
 .subm {
     display: flex;
