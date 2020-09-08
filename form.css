@@ -8,9 +8,12 @@ body {
     background-attachment: fixed;
     background-size: cover;
 }
+.error {
+  color: red;
+}
 .container_form {
     display: flex;
-    margin: 60px 100px !important;
+    margin: 55px 240px !important;
     /* align-items: center; */
     /* justify-content: center; */
     background-color: white;
@@ -21,7 +24,7 @@ body {
 }
 .form_left {
     flex: 1;
-    padding: 10px 20px 50px 20px;
+    padding: 10px 30px 50px 30px;
 }
 .form_right {
     padding-top: 20px;
@@ -153,7 +156,7 @@ input[type=radio] {
     height: 35px !important;
     background-color: #F73C4F !important;
 }
-button {
+#clear, #next {
     -moz-box-shadow: 5px 5px 5px rgba(68, 68, 68, 0.3);
     -webkit-box-shadow: 5px 5px 5px rgba(68, 68, 68, 0.3);
     box-shadow: 5px 5px 5px rgba(68, 68, 68, 0.3);
