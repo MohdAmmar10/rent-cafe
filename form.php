@@ -13,6 +13,8 @@
         $nameErr = $genderErr = $dobErr = $phoneErr = $cityErr = "";
         if ($_SERVER["REQUEST_METHOD"] == "POST")
         {
+            print_r($_POST);
+            
             if (empty($_POST["name"])) 
             {
                     $nameErr = "Name is required<br>"; 
@@ -60,7 +62,7 @@
                     $city = "Only letters and white space allowed<br>"; 
                 } 
             }
-
+            
         }
         if(isset($_POST['clear']))
         {
@@ -69,7 +71,7 @@
         }
         if($nameErr == "" && $genderErr == "" && $dobErr == "" && $phoneErr == "" && $cityErr == "" && isset($_POST['next']))
         {
-            header("Location: form1.php");
+            header("Location: form2.php");
         }        
     ?>
     <div class="row container_form">
@@ -89,11 +91,11 @@
                 <br><br> -->
                 <label for="gender">&emsp;&emsp;Gender</label>&emsp;
                 <label class="rad">
-                    <input type="radio" name="gender">
+                    <input type="radio" name="gender" value="male">
                     &emsp;<span class="checkmark"></span>
                 </label><span class="rad_label">Male</span>&emsp;
                 <label class="rad">
-                    <input type="radio" name="gender">
+                    <input type="radio" name="gender" value="female">
                     &emsp;<span class="checkmark"></span>
                 </label><span class="rad_label">Female</span>
                 <!-- <label class="rad">One

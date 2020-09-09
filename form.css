@@ -45,7 +45,7 @@ label {
     font-size: large;
     font-weight: 600;
 }
-input[type=text] {
+input[type=text]{
     width: 200px;
     height: 30px;
     outline: none;
@@ -55,6 +55,16 @@ input[type=text] {
     border-radius: 10px;
 }
 input[type=number] {
+    width: 200px;
+    height: 30px;
+    outline: none;
+    border: none;
+    padding: 10px;
+    background-color: #C4C4C4;
+    border-radius: 10px;
+}
+input[type=password]
+{
     width: 200px;
     height: 30px;
     outline: none;
