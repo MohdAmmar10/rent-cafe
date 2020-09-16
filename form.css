@@ -11,6 +11,16 @@ body {
 .error {
   color: red;
 }
+
+#fullcontainer {
+  /* margin: 55px 240px; */
+  margin-top: 55px;
+  border-radius: 40px !important;
+    -moz-box-shadow: 5px 5px 5px rgba(68, 68, 68, 0.6);
+    -webkit-box-shadow: 5px 5px 5px rgba(68, 68, 68, 0.6);
+    box-shadow: 5px 5px 5px rgba(68, 68, 68, 0.6);
+}
+
 .container_form {
     display: flex;
     margin: 55px 240px !important;
@@ -24,10 +34,11 @@ body {
 }
 .form_left {
     flex: 1;
-    padding: 10px 30px 50px 30px;
+    
 }
 .form_right {
     padding-top: 20px;
+    padding-bottom: 40px;
     flex: 1;
     display: flex;
     flex-direction: column;

@@ -74,50 +74,52 @@
             header("Location: form2.php");
         }        
     ?>
-    <div class="row container_form">
-        <div class="form_left col-sm-0 col-md-6 col-6">
-            <img src="logoImage.svg" width="420px" height="470px">
-        </div>
-        <div class="form_right col-sm-12 col-md-6 col-6">
-            <br/>
-            <h2>&emsp;REGISTRATION</h2>
-            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
-                <br>
-                <label for="fn">&emsp;&emsp;Name&emsp;</label>
-                <input type="text" name="name" id="name" placeholder="Name" autofocus autocomplete="OFF" value="<?php echo $nameVal ?>" >
-                <span class="error">* <br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<?php echo $nameErr;?></span><br>
-                <!-- <label for="ln">Email</label>
-                <input type="text" name="em" id="ln" placeholder="Email"  autocomplete="OFF">
-                <br><br> -->
-                <label for="gender">&emsp;&emsp;Gender</label>&emsp;
-                <label class="rad">
-                    <input type="radio" name="gender" value="male">
-                    &emsp;<span class="checkmark"></span>
-                </label><span class="rad_label">Male</span>&emsp;
-                <label class="rad">
-                    <input type="radio" name="gender" value="female">
-                    &emsp;<span class="checkmark"></span>
-                </label><span class="rad_label">Female</span>
-                <!-- <label class="rad">One
-                    <input type="radio" checked="checked" name="gender">
-                    <span class="checkmark"></span>
-                </label> -->
-                <span class="error">* <br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<?php echo $genderErr;?></span><br>
-                <label for="dob">Date of Birth</label>
-                <input type="Date" name="dob" id="dob" autocomplete="OFF" value="<?php echo $dobVal ?>" > 
-                <span class="error">* <br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<?php echo $dobErr;?></span><br>
-                <label for="pn">&emsp;&emsp;Phone&emsp;</label>
-                <input type="text" name="pn" id="pn" placeholder="Phone" autocomplete="OFF" value="<?php echo $phoneVal ?>" >
-                <span class="error">* <br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<?php echo $phoneErr;?></span><br>
-                <label for="ct">&emsp;&emsp;&emsp;City&emsp;</label>
-                <input type="text" name="city" id="city" placeholder="City" autofocus autocomplete="OFF" value="<?php echo $cityVal ?>" >
-                <span class="error">* <br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<?php echo $cityErr;?></span><br>
-                <div class="subm">
-                    &emsp;&emsp;&emsp;&emsp;
-                    <input type="submit" class="btn btn-danger cl" id="clear" name="clear" value="Clear">&emsp;&emsp;
-                    <input type="submit" class="btn btn-primary cl" id="next" name="next" value="Next">
-                </div>
-            </form> 
+    <div id="fullcontainer" class="container bg-white justify-content-around">
+        <div class="row">
+            <div class="form_left col-12 col-md-6">
+                <img src="logoImage.svg" width="auto" height="470px" class="d-none d-md-block px-3">
+            </div>
+            <div class="form_right col-12 col-md-6 justify-content-center">
+                <br/>
+                <h2>&emsp;REGISTRATION</h2>
+                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
+                    <br>
+                    <label for="fn">&emsp;&emsp;Name&emsp;</label>
+                    <input type="text" name="name" id="name" placeholder="Name" autofocus autocomplete="OFF" value="<?php echo $nameVal ?>" >
+                    <span class="error">* <br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<?php echo $nameErr;?></span><br>
+                    <!-- <label for="ln">Email</label>
+                    <input type="text" name="em" id="ln" placeholder="Email"  autocomplete="OFF">
+                    <br><br> -->
+                    <label for="gender">&emsp;&emsp;Gender</label>&emsp;
+                    <label class="rad">
+                        <input type="radio" name="gender" value="male">
+                        &emsp;<span class="checkmark"></span>
+                    </label><span class="rad_label">Male</span>&emsp;
+                    <label class="rad">
+                        <input type="radio" name="gender" value="female">
+                        &emsp;<span class="checkmark"></span>
+                    </label><span class="rad_label">Female</span>
+                    <!-- <label class="rad">One
+                        <input type="radio" checked="checked" name="gender">
+                        <span class="checkmark"></span>
+                    </label> -->
+                    <span class="error">* <br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<?php echo $genderErr;?></span><br>
+                    <label for="dob">Date of Birth</label>
+                    <input type="Date" name="dob" id="dob" autocomplete="OFF" value="<?php echo $dobVal ?>" > 
+                    <span class="error">* <br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<?php echo $dobErr;?></span><br>
+                    <label for="pn">&emsp;&emsp;Phone&emsp;</label>
+                    <input type="text" name="pn" id="pn" placeholder="Phone" autocomplete="OFF" value="<?php echo $phoneVal ?>" >
+                    <span class="error">* <br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<?php echo $phoneErr;?></span><br>
+                    <label for="ct">&emsp;&emsp;&emsp;City&emsp;</label>
+                    <input type="text" name="city" id="city" placeholder="City" autofocus autocomplete="OFF" value="<?php echo $cityVal ?>" >
+                    <span class="error">* <br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<?php echo $cityErr;?></span><br>
+                    <div class="subm">
+                        &emsp;&emsp;&emsp;&emsp;
+                        <input type="submit" class="btn btn-danger cl" id="clear" name="clear" value="Clear">&emsp;&emsp;
+                        <input type="submit" class="btn btn-primary cl" id="next" name="next" value="Next">
+                    </div>
+                </form> 
+            </div>
         </div>
     </div>
 </body>
