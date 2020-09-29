@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<?php session_start();?>
 <html>
 <head>
 	<title>Rent Cafe</title>
@@ -6,6 +6,11 @@
 	<link href="https://fonts.googleapis.com/css2?family=Lato:ital@0;1&display=swap" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+	<?php 
+		$_SESSION["email"] =  $_COOKIE['EMAIL'];
+		$_SESSION["pass"] = $_COOKIE['PASSWORD']; 
+	?>
+</head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-light bg-light" style="padding-left: 10%; padding-right: 10%;">
   		<img src="asset/Logo.svg">
@@ -18,18 +23,21 @@
         			<a class="nav-link" href="home.html" style="margin-right: 1.2rem; font-weight: bold;">HOME <span class="sr-only">(current)</span></a>
       			</li>
       			<li class="nav-item">
-        			<a class="nav-link" href="solution.html" style="margin-right: 1.2rem; font-weight: bold;">SOLUTION</a>
+        			<a class="nav-link" href="solution.html" style="margin-right: 1.2rem; font-weight: bold;">HOW IT WORKS</a>
       			</li>
       			<li class="nav-item">
         			<a class="nav-link" href="team.html" style="margin-right: 1.2rem; font-weight: bold;">ABOUT US</a>
+				</li>
+				<li class="nav-item">
+        			<a class="nav-link" href="contact.html" style="margin-right: 1.2rem; font-weight: bold;">CONTACT US</a>
       			</li>
-      			<li>
-      				<a href="contact.html" class="btn btn-primary" style="background-color: #12213F!important;">CONTACT US</a>
+				<li>
+      				<a href="delete.php" class="btn btn-primary" style="background-color: #12213F!important;">LOGOUT</a>
       			</li>
     		</ul>
   		</div>
 	</nav>
-
+	<h1> <?php echo "Your email id is ".$_SESSION["email"]; ?>
 	<div>
 		<img src="asset/Landing.jpg">
 	</div>

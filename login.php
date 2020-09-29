@@ -42,6 +42,8 @@
       }
       if($emailErr == "" && $passErr == "" && isset($_POST['clear']))
       {
+          setcookie('EMAIL',$_POST['email'],time()+ 3600);
+          setcookie('PASSWORD',$_POST['pass'],time()+ 3600);
           header("Location: home.php");
       } 
     }
