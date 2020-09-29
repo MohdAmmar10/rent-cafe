@@ -9,42 +9,49 @@
 </head>
 <body>
 	<?php
-	$email =$emailErr = $passowrd= $passErr= $uppercase= $lowercase= $number= "";
-	if($_SERVER["REQUEST_METHOD"]=="POST"){
+    $email =$emailErr = $passowrd= $passErr= $uppercase= $lowercase= $number= "";
+    if($_SERVER["REQUEST_METHOD"]=="POST")
+    {
+      if (empty($_POST["email"])) 
+      {
+        $emailErr = "Email is required";
+      } 
+      else 
+      {
+        $email = test_input($_POST["email"]);
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+          $emailErr = "Invalid email format";
+        }
+      }
 
+      if(empty($_POST["pass"])) 
+      {
+        $passErr= "Password is required";
+      }
+      else
+      {
+        $password = ($_POST['pass']);
+        $uppercase = preg_match('@[A-Z]@', $password);
+        $lowercase = preg_match('@[a-z]@', $password);
+        $number    = preg_match('@[0-9]@', $password);
 
-	if (empty($_POST["email"])) {
-    $emailErr = "Email is required";
-     } 
-    else {
-    $email = test_input($_POST["email"]);
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-      $emailErr = "Invalid email format";
+        if(!$uppercase || !$lowercase || !$number || strlen($password) < 8) 
+        {
+        $passErr="Password should be of 8 letters and contain uppercase and numbers";
+        }
+      }
+      if($emailErr == "" && $passErr == "" && isset($_POST['clear']))
+      {
+          header("Location: home.php");
+      } 
     }
-  }
-
-  if(empty($_POST["pass"])) 
-            {
-                $passErr= "Password is required";
-            }
-else{
-    $password = ($_POST['pass']);
-    $uppercase = preg_match('@[A-Z]@', $password);
-    $lowercase = preg_match('@[a-z]@', $password);
-    $number    = preg_match('@[0-9]@', $password);
-
-    if(!$uppercase || !$lowercase || !$number || strlen($password) < 8) {
-    $passErr="Password should be of 8 letters and contain uppercase and numbers";
+    function test_input($data) 
+    {
+      $data = trim($data);
+      $data = stripslashes($data);
+      $data = htmlspecialchars($data);
+      return $data;
     }
-}
-}
-
-function test_input($data) {
-  $data = trim($data);
-  $data = stripslashes($data);
-  $data = htmlspecialchars($data);
-  return $data;
-}
 
 	?>
 <div class="row container_form">
@@ -67,7 +74,7 @@ function test_input($data) {
         <p align="right"><a href="#" style="color:#4F66D0;">Forget Password?</a></p>
         
         <div class="subm">
-        	<button type="submit" id="clear" name="clear" value="clear" class="btn btn-primary cl">LOGIN</button>
+        	<input type="submit" id="clear" name="clear" value="LOGIN" class="btn btn-primary cl">
         </div> 
         </form>	
         </div>	
