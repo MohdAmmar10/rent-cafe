@@ -39,7 +39,7 @@
         <div class="form_right col-sm-12 col-md-6 col-6">
             <br/>
             <h2>&emsp;REGISTRATION</h2>
-            <form action="home.html" method="POST">
+            <form action="connect.php" method="POST">
                 <br>
                 <label for="em">Email&emsp;</label>
                 <input type="text" name="email" id="name" placeholder="Email" autofocus autocomplete="OFF">
