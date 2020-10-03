@@ -21,7 +21,7 @@
 		<div class="collapse navbar-collapse" id="navlinks">
     		<ul class="navbar-nav ml-auto">
       			<li class="nav-item">
-        			<a class="nav-link" href="home.php	" style="margin-right: 1.2rem; font-weight: bold;">HOME</a>
+        			<a class="nav-link" href="home.php" style="margin-right: 1.2rem; font-weight: bold;">HOME</a>
       			</li>
       			<li class="nav-item">
         			<a class="nav-link" href="solution.html" style="margin-right: 1.2rem; font-weight: bold;">HOW IT WORKS</a>
@@ -56,7 +56,7 @@
 				</div>		
 			</div>
 		</div>
-		<div class="about_us pt-4 pb-2">
+		<div class="about_us pt-4 px-3 pb-2">
 			<h1>About Us</h1>
 			<p>
 			Rent Cafe is a Mumbai based start-up, started by a group of friends from KJSCE, Mumbai with an aim to make the<br>
@@ -69,9 +69,41 @@
 			Isn’t it simple?
 			</p>
 		</div>
-		<div class="our_services">
+		<div class="our_services pt-3 px-3 pb-2">
 			<h1>Our Services</h1>
-			<img src="asset/LandingOurServices.jpg">
+			<img class="img-fluid" src="asset/LandingOurServices.jpg">
+		</div>
+		<div class="how_it_works pt-3 px-3 pb-2">
+			<h1>How It Works?</h1>
+			<img class="img-fluid" src="asset/LandingHowItWorks.jpg">
+		</div>
+		<div class="why_rc pt-3 px-3 pb-2">
+			<h1>Why Rent Cafe</h1>
+			<img class="img-fluid" src="asset/LandingWhyRC.png">
+		</div>
+		<div class="footer fluid-container pt-5 pr-3 pb-3">
+			<div class="row p-0 text-center">
+				<div class="footer_logo col-12 col-md-4 p-0 text-center">
+					<img src="asset/Logo.svg">
+					<h5 class="pt-2">Follow Us On</h5>
+					<img src="asset/FooterFacebook.jpg" class="px-1 rounded-circle">
+					<img src="asset/FooterLinkedIn.jpg" class="px-1 rounded-circle">
+					<img src="asset/FooterInstagram.jpg" class="px-1 rounded-circle">
+				</div>
+				<div class="footer_links col-12 col-md-4 p-0 text-white text-center">
+					<h5 class="pt-2">&emsp;&emsp;&emsp;Quick Links:</h5>
+					<h6><a class="text-white" href="home.php">Home</a><br></h6>
+					<h6><a class="text-white" href="#">&emsp;Services</a><br></h6>
+					<h6><a class="text-white" href="#">&emsp;&emsp;&emsp;Registration</a><br></h6>
+				</div>
+				<div class="footer_contact col-12 col-md-4 p-0 text-white text-center">
+					<h5 class="pt-2">Contact Us:&emsp;&emsp;&emsp;&emsp;&emsp;</h5>
+					<p><i class="fas fa-phone-alt"></i> 0223006002, 0223006003<br>
+					<i class="far fa-envelope"></i> contactus@rentcafe.com<br>
+					KJSCE, Vidyavihar, Mumbai, <br>
+					Maharashtra - 400077, India</p>
+				</div>
+			</div>
 		</div>
 	</div>
 </body>

@@ -6,9 +6,6 @@
     padding-bottom: 400px;
     text-align: center;
 }
-.intro h1 {
-    font-weight: bold;
-}
 .intro p {
     font-weight: 500;
 }
@@ -21,12 +18,11 @@
     text-align: center;
     color: #fff;
 }
-.about_us h1 {
+h1 {
     font-weight: bold;
 }
-.our_services {
+.our_services, .how_it_works, .why_rc {
     text-align: center;
-    font-weight: bold;
 }
 @media (max-width: 768px) 
 {
@@ -39,4 +35,9 @@
         padding-top: 50px;
         padding-bottom: 50px;
     }
+}
+.footer {
+    background-color: #10214D;
+    text-align: center;
+    color: #fff;
 }
