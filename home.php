@@ -7,10 +7,24 @@
 	<link href="https://fonts.googleapis.com/css2?family=Lato:ital@0;1&display=swap" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-	<!-- <?php 
+	<?php 
 		$_SESSION["email"] =  $_COOKIE['EMAIL'];
-		$_SESSION["pass"] = $_COOKIE['PASSWORD']; 
-	?> -->
+	?>
+	<!-- <script>
+		$(document).ready(function() {
+		// executes when HTML-Document is loaded and DOM is ready
+		console.log("document is ready");
+		
+
+		$( ".card" ).hover(
+		function() {
+			$(this).addClass('shadow-lg').css('cursor', 'pointer'); 
+		}, function() {
+			$(this).removeClass('shadow-lg');
+		}
+		);
+		})
+	</script> -->
 </head>
 <body>
 	<nav class="navbar sticky-top navbar-expand-md navbar-light bg-light">
@@ -69,17 +83,63 @@
 			Isn’t it simple?
 			</p>
 		</div>
-		<div class="our_services pt-3 px-3 pb-2">
+		<div class="our_services px-3">
 			<h1>Our Services</h1>
 			<img class="img-fluid" src="asset/LandingOurServices.jpg">
 		</div>
-		<div class="how_it_works pt-3 px-3 pb-2">
+		<div class="how_it_works px-3">
 			<h1>How It Works?</h1>
 			<img class="img-fluid" src="asset/LandingHowItWorks.jpg">
 		</div>
-		<div class="why_rc pt-3 px-3 pb-2">
+		<div class="why_rc container">
 			<h1>Why Rent Cafe</h1>
-			<img class="img-fluid" src="asset/LandingWhyRC.png">
+			<!-- <div class="row">
+				<div class="img1 col-12 col-md-4">
+					<div class="card mx-auto" style="width: 18rem;border:0px">
+						<img class="card-img-top" src="asset/LandingWrc1.svg" alt="Card image cap">
+						<div class="card-body">
+							<h4 class="card-title">Save Money</h4>
+						</div>
+					</div>
+				</div>
+				<div class="img2 col-12 col-md-4 ">
+					<div class="card mx-auto" style="width: 18rem;border:0px">
+						<img class="card-img-top" src="asset/LandingWrc2.svg" alt="Card image cap">
+						<div class="card-body">
+							<h4 class="card-title">Convenience</h4>
+						</div>
+					</div>
+				</div>
+				<div class="img3 col-12 col-md-4">
+					<div class="card mx-auto" style="width: 18rem;border:0px">
+						<img class="card-img-top" src="asset/LandingWrc3.svg" alt="Card image cap">
+						<div class="card-body">
+							<h4 class="card-title">Reliable</h4>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="img4 col-12 col-md-6">
+					<div class="card mx-auto" style="width: 18rem;border:0px">
+						<img class="card-img-top" src="asset/LandingWrc4.svg" alt="Card image cap">
+						<div class="card-body">
+							<h4 class="card-title">Money-Back Guarantee</h4>
+						</div>
+					</div>
+				</div>
+				<div class="img4 col-12 col-md-6">
+					<div class="card mx-auto" style="width: 18rem;border:0px">
+						<img class="card-img-top" src="asset/LandingWrc5.svg" alt="Card image cap">
+						<div class="card-body">
+							<h4 class="card-title">One-Stop <br>Service</h4>
+						</div>
+					</div>
+				</div>
+			</div> -->
+			<div class="row">
+				<img class="img-fluid m-3 p-3" src="asset/LandingWhyRC.png">
+			</div>
 		</div>
 		<div class="footer fluid-container pt-5 pr-3 pb-3">
 			<div class="row p-0 text-center">

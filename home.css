@@ -23,6 +23,9 @@ h1 {
 }
 .our_services, .how_it_works, .why_rc {
     text-align: center;
+    border-bottom: 1px solid #10214D;
+    padding-top: 40px;
+    padding-bottom: 20px;
 }
 @media (max-width: 768px) 
 {
