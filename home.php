@@ -8,7 +8,10 @@
 	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 	<?php 
-		$_SESSION["email"] =  $_COOKIE['EMAIL'];
+		if(isset($_COOKIE['EMAIL']))
+		{
+			$_SESSION["email"] =  $_COOKIE['EMAIL'];	
+		}
 	?>
 	<!-- <script>
 		$(document).ready(function() {
@@ -45,10 +48,22 @@
 				</li>
 				<li class="nav-item">
         			<a class="nav-link" href="contact.html" style="margin-right: 1.2rem; font-weight: bold;">CONTACT US</a>
-      			</li>
-				<li class="nav-item">
-      				<a href="delete.php" class="btn btn-primary" style="background-color: #12213F!important;">LOGOUT</a>
-      			</li>
+				</li>
+				<?php if(isset($_COOKIE['EMAIL'])) : ?>
+					<li class="nav-item">
+						<p class="nav-link" style="margin-right: 1.2rem; font-weight: bold;"><?php echo $_COOKIE['EMAIL'];?></p>
+					</li>
+					<li class="nav-item">
+						<a href="delete.php" class="btn btn-primary" style="background-color: #12213F!important;">LOGOUT</a>
+					</li>
+				<?php else : ?>
+					<li class="nav-item">
+						<a href="login.php" class="btn btn-primary" style="margin-right: 0.75rem;background-color: #12213F!important;">LOGIN</a>
+					</li>
+					<li class="nav-item">
+						<a href="form.php" class="btn btn-primary" style="background-color: #12213F!important;">SIGNUP</a>
+					</li>
+				<?php endif; ?>
     		</ul>
   		</div>
 	</nav>
