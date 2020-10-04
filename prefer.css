@@ -28,7 +28,7 @@ body {
     height: 35px !important;
     background-color: #5068A9 !important;
 }
-#next {
+#back,#next {
     -moz-box-shadow: 5px 5px 5px rgba(68, 68, 68, 0.3);
     -webkit-box-shadow: 5px 5px 5px rgba(68, 68, 68, 0.3);
     box-shadow: 5px 5px 5px rgba(68, 68, 68, 0.3);
@@ -109,12 +109,16 @@ input[type=radio] {
   /* Show the indicator (dot/circle) when checked */
   .rad input:checked ~ .checkmark:after {
     display: block;
-  }/*
-  .rad_label {
-    font-size: large;
-    font-weight: 600;
-  }*/
-.card1 {
+  }
+
+.btn-danger {
+    outline: none;
+    border-radius: 8px !important;
+    width: 85px !important;
+    height: 35px !important;
+    background-color: #F73C4F !important;
+}
+/*.card1 {
     margin-left: 140px;
     z-index: 0;
     border-right: 1px solid #F5F5F5
@@ -204,4 +208,4 @@ input[type=radio] {
     #progressbar {
         left: -25px
     }
-}
+}*/
