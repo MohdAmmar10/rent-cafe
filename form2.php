@@ -9,27 +9,50 @@
 <body>
     <?php
         function passwordValidates( $pass ) {
-            return preg_match("/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/", $pass);
+            return preg_match("/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,20}$/", $pass);
         }
          
         $emailErr = $passErr = $cpassErr = "";
         if(isset($_POST["submit"]))
         {
-            $email = $_POST['email'];
-            $pasword = $_POST['password'];
-            $confirm = $_POST['cpassword'];
-            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                $emailErr = 'Please Enter Proper Email Id!';
+            if (empty($_POST["email"])) 
+            {
+                $emailErr = 'Email Id is Required';
             }
+            else
+            {
+                $email = $_POST['email'];
+                if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                    $emailErr = 'Please Enter Valid Email Id!';
+                }
+            }
+            if (empty($_POST["password"]))
+            {
+                $passErr = 'Password is Required';
+            }
+            else
+            {
+                $pasword = $_POST['password'];
+                $confirm = $_POST['cpassword'];
 
-            if(!passwordValidates($pasword))
-            {
-                $passErr='Password format is not correct!';
+                if(!passwordValidates($pasword))
+                {
+                    $passErr='Password format is not correct!';
+                }
+                if($pasword!=$confirm)
+                {
+                    $cpassErr='Password and confirm password are not matching!';
+                }
             }
-            if($pasword!=$confirm)
+            if($emailErr == "" && $passErr == "" && $cpassErr == "" && isset($_POST['submit']))
             {
-                $cpassErr='Password and confirm password is not correct!';
-            }
+                setcookie('EMAIL',$_POST['email'],time()+ 3600);
+                header("Location: prefer1.php");
+            }        
+        }
+        if(isset($_POST['back']))
+        {
+            header("Location: form.php");
         }
     ?>
     <div class="row container_form">
@@ -39,7 +62,7 @@
         <div class="form_right col-sm-12 col-md-6 col-6">
             <br/>
             <h2>&emsp;REGISTRATION</h2>
-            <form action="connect.php" method="POST">
+            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
                 <br>
                 <label for="em">Email&emsp;</label>
                 <input type="text" name="email" id="name" placeholder="Email" autofocus autocomplete="OFF">

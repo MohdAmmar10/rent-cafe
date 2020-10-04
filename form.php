@@ -12,9 +12,7 @@
         $nameVal = $genderVal = $dobVal = $phoneVal = $cityVal = "";
         $nameErr = $genderErr = $dobErr = $phoneErr = $cityErr = "";
         if ($_SERVER["REQUEST_METHOD"] == "POST")
-        {
-            print_r($_POST);
-            
+        {            
             if (empty($_POST["name"])) 
             {
                     $nameErr = "Name is required<br>"; 
