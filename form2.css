@@ -66,7 +66,14 @@ input[type=text],input[type=password],input[type=email] {
     height: 35px !important;
     background-color: #5068A9 !important;
 }
-#clear, #next {
+.btn-danger {
+    outline: none;
+    border-radius: 8px !important;
+    width: 85px !important;
+    height: 35px !important;
+    background-color: #F73C4F !important;
+}
+#back, #submit {
     -moz-box-shadow: 5px 5px 5px rgba(68, 68, 68, 0.3);
     -webkit-box-shadow: 5px 5px 5px rgba(68, 68, 68, 0.3);
     box-shadow: 5px 5px 5px rgba(68, 68, 68, 0.3);
