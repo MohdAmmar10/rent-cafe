@@ -21,6 +21,10 @@
 h1 {
     font-weight: bold;
 }
+.our_services
+{
+    text-align: center;
+}
 @media (max-width: 768px) 
 {
     .home_content

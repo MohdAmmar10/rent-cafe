@@ -98,16 +98,16 @@
 			Isn’t it simple?
 			</p>
 		</div>
-		<div class="our_services px-3" style="margin-top: 10%; margin-bottom: 10%;">
-			<h1>Our Services</h1>
+		<div class="our_services px-3" style="margin-top: 10%; margin-bottom: 10%; margin-left: 10%; margin-right: 10%;">
+			<h1 style="text-align: center;">Our Services</h1>
 			<img class="img-fluid" src="asset/LandingOurServices.jpg">
 		</div>
 		<div class="how_it_works px-3" style="margin-top: 10%; margin-bottom: 10%; margin-left: 10%; margin-right: 10%;">
-			<h1>How It Works?</h1>
+			<h1 style="text-align: center;">How It Works?</h1>
 			<img class="img-fluid" src="asset/LandingHowItWorks.jpg">
 		</div>
 		<div class="why_rc container" style="margin-top: 10%; margin-bottom: 10%; padding-left: 10%; padding-right: 10%;">
-			<h1>Why Rent Cafe</h1>
+			<h1 style="text-align: center;">Why Rent Cafe</h1>
 			<!-- <div class="row">
 				<div class="img1 col-12 col-md-4">
 					<div class="card mx-auto" style="width: 18rem;border:0px">
