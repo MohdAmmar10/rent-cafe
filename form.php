@@ -39,7 +39,9 @@
             else 
             {  
                 $dob = date_diff(date_create($_POST['dob']), date_create('now'))->y;
-                $d = $_POST['dob']; 
+                // $d = $_POST['dob'];
+                $parts = explode('/', $_POST['dob']);
+                $d  = "$parts[2]$parts[0]$parts[1]";
                 if ($dob<18) {
                     $dobErr = "Age should be more than 18 years<br>"; 
                 } 
@@ -80,6 +82,15 @@
             $_SESSION["dob"] = $d;
             $_SESSION["phone"] = $phone;
             $_SESSION["city"] = $city;
+
+            // $server = "localhost";
+            // $username = "root";
+            // $passowrd = "";
+            // $dbname = "rent_cafe";
+
+            // $conn = mysqli_connect($server, $username, $passowrd, $dbname);
+            // $query = "insert into client_details(name,gender,dob,phone,city) values('$name','$gender','$d','$phone','$city')";
+            // $run = mysqli_query($conn,$query);
             header("Location: form2.php");
         }        
     ?>

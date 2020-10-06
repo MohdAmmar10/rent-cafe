@@ -1,3 +1,4 @@
+<?php session_start();?>
 <html>
 <head>
     <title>
@@ -59,7 +60,20 @@
             }
             if($emailErr == "" && $passErr == "" && $cpassErr == "" && isset($_POST['submit']))
             {
+                $name=$_SESSION["name"];
+                $gender=$_SESSION["gender"];
+                $d=$_SESSION["dob"];                
+                $phone=$_SESSION["phone"];
+                $city=$_SESSION["city"];
                 setcookie('EMAIL',$_POST['email'],time()+ 3600);
+                $server = "localhost";
+                $username = "root";
+                $pass = "";
+                $dbname = "rent_cafe";
+                $password = $_POST['password'];
+                $conn = mysqli_connect($server, $username, $pass, $dbname);
+                $query = "insert into client_details(name,gender,dob,phone,city,email,password) values('$name','$gender','$d','$phone','$city','$email','$password')";
+                $run = mysqli_query($conn,$query);
                 header("Location: prefer1.php");
             }        
         }
