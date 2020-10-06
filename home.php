@@ -13,21 +13,6 @@
 			$_SESSION["email"] =  $_COOKIE['EMAIL'];	
 		}
 	?>
-	<!-- <script>
-		$(document).ready(function() {
-		// executes when HTML-Document is loaded and DOM is ready
-		console.log("document is ready");
-		
-
-		$( ".card" ).hover(
-		function() {
-			$(this).addClass('shadow-lg').css('cursor', 'pointer'); 
-		}, function() {
-			$(this).removeClass('shadow-lg');
-		}
-		);
-		})
-	</script> -->
 </head>
 <body>
 	<nav class="navbar sticky-top navbar-expand-md navbar-light bg-light">
@@ -67,7 +52,6 @@
     		</ul>
   		</div>
 	</nav>
-	<!-- <h1> <?php echo "Your email id is ".$_SESSION["email"]; ?> -->
 	<div class="content">
 		<div class="home_content fliud-container pr-3">
 			<div class="row p-0">

@@ -8,11 +8,24 @@
 </head>
 <body>
     <?php
-        function passwordValidates( $pass ) {
-            return preg_match("/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,20}$/", $pass);
+        function passwordValidates( $password ) {
+            $uppercase = preg_match('@[A-Z]@', $password);
+            $lowercase = preg_match('@[a-z]@', $password);
+            $number    = preg_match('@[0-9]@', $password);
+            if(!$uppercase || !$lowercase || !$number || strlen($password) < 8) 
+            {
+                return false;
+            }
+            else 
+            {
+                return true;
+            }
+            // return preg_match("/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,20}$/", $pass);
         }
          
-        $emailErr = $passErr = $cpassErr = "";
+        $emailErr ="";
+        $passErr = "";
+        $cpassErr = "";
         if(isset($_POST["submit"]))
         {
             if (empty($_POST["email"])) 
@@ -37,7 +50,7 @@
 
                 if(!passwordValidates($pasword))
                 {
-                    $passErr='Password format is not correct!';
+                    $passErr='Password should be of 8 letters and contain uppercase and numbers';
                 }
                 if($pasword!=$confirm)
                 {
@@ -65,17 +78,17 @@
             <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
                 <br>
                 <label for="em">Email&emsp;</label>
-                <input type="text" name="email" id="name" placeholder="Email" autofocus autocomplete="OFF">
+                <input type="text" name="email" id="name" autofocus autocomplete="OFF">
                 <span class="error">* <br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<?php echo $emailErr;?>
                 </span><br>
 
                 <label for="pass">Password&emsp;</label>
-                <input type="password" name="password" id="pass" placeholder="Password should be 8characters long" autofocus autocomplete="OFF">
+                <input type="password" name="password" id="pass" autofocus autocomplete="OFF">
                 <span class="error">* <br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<?php echo $passErr;?>
                 </span><br>
 
                 <label for="pass">Confirm Password<!-- &emsp; --></label>
-                <input type="password" name="cpassword" id="pass" placeholder="Re-enter the above Password" autofocus autocomplete="OFF">
+                <input type="password" name="cpassword" id="pass" autofocus autocomplete="OFF">
                 <span class="error">* <br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<?php echo $cpassErr;?>
                 </span><br>
                 
