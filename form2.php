@@ -71,8 +71,9 @@
                 $pass = "";
                 $dbname = "rent_cafe";
                 $password = $_POST['password'];
+                $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
                 $conn = mysqli_connect($server, $username, $pass, $dbname);
-                $query = "insert into client_details(name,gender,dob,phone,city,email,password) values('$name','$gender','$d','$phone','$city','$email','$password')";
+                $query = "insert into client_details(name,gender,dob,phone,city,email,password) values('$name','$gender','$d','$phone','$city','$email','$hashedPassword')";
                 $run = mysqli_query($conn,$query);
                 header("Location: prefer1.php");
             }        
