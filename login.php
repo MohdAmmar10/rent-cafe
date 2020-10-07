@@ -48,19 +48,19 @@
           $username = "root";
           $pass = "";
           $dbname = "rent_cafe";
-
+          
           $conn = mysqli_connect($server, $username, $pass, $dbname);
           $query = "select email,password from client_details where email='$email'";
           $result = mysqli_query($conn,$query);
           if (mysqli_num_rows($result) > 0) {
             while($row = mysqli_fetch_assoc($result)) 
             {
-              if($row["password"]==$password)
+              if(password_verify($password, $row["password"]))
               {
                 header("Location: home.php");
               }
             }
-            $passErr="Wrong UserName orbyy Password";
+            $passErr="Wrong Email or Password";
           } 
           else {
             $flag=1;
@@ -87,6 +87,7 @@
         <h2>LOGIN</h2><br>	
         <?php if($flag==1 ): ?>
           <a href="form.php" >New User? Goto SignUp page</a>
+          <br>
         <?php endif; ?>
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
         <label for="email">Email&emsp;&emsp;</label>
