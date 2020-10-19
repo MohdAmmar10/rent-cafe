@@ -1,6 +1,8 @@
-html {
-    height: 100%;
+html 
+{
+	height: 100%;
     width: 100%;
+    font-family: 'Roboto', sans-serif;
 }
 body {
     background-image: url("backgroundImage.svg");
@@ -8,58 +10,99 @@ body {
     background-attachment: fixed;
     background-size: cover;
 }
+img{
+    margin-bottom: 30px;
+}
+h4{
+    margin-left: 8%;
+    margin-top: 20px !important;
+    color: #5068A9;
+    font-size: x-large!important;
+    font-weight: 600!important;
+}
+h6{
+    margin-left: 8%;
+    font-family: 'Poppins', sans-serif;
+    font-size: light!important;
+    font-weight: 400!important;
+    margin-bottom: 30px!important;
+}
+
+li:nth-child(even) {
+    list-style: none;
+    margin-left: 12px;
+    margin-bottom: 4px;
+}
+li:nth-child(odd) {
+    list-style: square inside url('asset/blankc.svg');
+    margin-bottom: -10px;
+}
 #fullcontainer {
-  /* margin: 55px 240px; */
-  margin-top: 55px;
-  border-radius: 40px !important;
-  -moz-box-shadow: 5px 5px 5px rgba(68, 68, 68, 0.6);
-  -webkit-box-shadow: 5px 5px 5px rgba(68, 68, 68, 0.6);
-  box-shadow: 5px 5px 5px rgba(68, 68, 68, 0.6);
-  margin-bottom: 5%;
+    margin-top: 55px;
+    border-radius: 40px !important;
+    -moz-box-shadow: 5px 5px 5px rgba(68, 68, 68, 0.6);
+    -webkit-box-shadow: 5px 5px 5px rgba(68, 68, 68, 0.6);
+    box-shadow: 5px 5px 5px rgba(68, 68, 68, 0.6);
+	margin-bottom: 5%;
+	width: 100%;
+	height: auto;
+}
+.vertical { 
+	border-left: 2px solid rgb(121, 116, 116); 
+	height: 30px; 
+	/* position:absolute;  */
+	left: 50%; 
+} 
+.listtick {
+    list-style: square inside url('asset/circle.svg') !important;
+    padding-top: 5px;
+}
+#formbg{
+    padding-left: 1rem;
+    margin-left: 2.2rem;
+	-webkit-box-shadow: 5px 5px 2px 0px rgba(217,214,216,1);
+	-moz-box-shadow: 5px 5px 2px 0px rgba(217,214,216,1);
+	box-shadow: 5px 5px 2px 0px rgba(217,214,216,1);
+	margin-bottom: 10%;
+	background-color: rgba(253,210,0,0.26);  
+	width:34rem;
+    border-radius: 20px !important;
 }
 .subm {
     display: flex;
     align-items: center;
     justify-content: center;
-  }
+    margin-bottom: 5%;
+    margin-top: 5%;
+    margin-left: 10%;
+}
 .btn-primary {
     border-radius: 8px !important;
-    width: 85px !important;
-    height: 35px !important;
+    width: 100px !important;
+    height: 40px !important;
     background-color: #5068A9 !important;
 }
-#back,#next {
+.btn-danger {
+    border-radius: 8px !important;
+    width: 100px !important;
+    height: 40px !important;
+    background-color: #F73C4F !important;
+}
+#back, #next {
     -moz-box-shadow: 5px 5px 5px rgba(68, 68, 68, 0.3);
     -webkit-box-shadow: 5px 5px 5px rgba(68, 68, 68, 0.3);
     box-shadow: 5px 5px 5px rgba(68, 68, 68, 0.3);
 }
-#formbg
-{
-	-webkit-box-shadow: 5px 5px 2px 0px rgba(217,214,216,1);
--moz-box-shadow: 5px 5px 2px 0px rgba(217,214,216,1);
-box-shadow: 5px 5px 2px 0px rgba(217,214,216,1);
-}
-label {
+#l1{
     font-size: large;
-    font-weight: 600;
+	font-weight: 400;
+	display: inline-block;
+  	width: 220px;
+    text-align: right;
+    padding-top: -10px;
+    margin-top: 0px;
 }
-.rad_label
-{
-	font-size: 18px;
-	font-weight: lighter;
-}
-input[type=radio] {
-    /* width: 200px;
-    height: 30px; */
-    outline: none;
-    border: none;
-    padding: 10px;
-    background-color: #C4C4C4;
-    border-radius: 8px;
-}
-/* Customize the label (the rad) */
 .rad {
-    /* display: block; */
     position: relative;
     padding-left: 10px;
     cursor: pointer;
@@ -67,145 +110,65 @@ input[type=radio] {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-  }
-  
-  /* Hide the browser's default radio button */
-  .rad input {
+    display: inline-block;
+  	text-align: left;
+}
+.rad_label
+{
+	font-size: 20px;
+	font-weight: lighter;
+}
+/* Hide the browser's default radio button */
+.rad input 
+{
     position: absolute;
     opacity: 0;
     cursor: pointer;
     height: 0;
     width: 0;
-  }
+}
   
   /* Create a custom radio button */
-  .checkmark {
+.checkmark {
     position: absolute;
     top: 0;
     left: 0;
-    height: 25px;
-    width: 25px;
+    height: 20px;
+    width: 20px;
     background-color: #C4C4C4;
     border-radius: 50%;
-  }
-  
-  /* On mouse-over, add a grey background color */
-  .rad:hover input ~ .checkmark {
+}
+/* On mouse-over, add a grey background color */
+.rad:hover input ~ .checkmark {
     background-color: #C4C4C4;
-  }
+}
   
-  /* When the radio button is checked, add a blue background */
-  .rad input:checked ~ .checkmark {
+/* When the radio button is checked, add a blue background */
+.rad input:checked ~ .checkmark {
     background-color: #5068A9;
-  }
+}
   
-  /* Create the indicator (the dot/circle - hidden when not checked) */
-  .checkmark:after {
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
     content: "";
     position: absolute;
     display: none;
-  }
+}
   
-  /* Show the indicator (dot/circle) when checked */
-  .rad input:checked ~ .checkmark:after {
+/* Show the indicator (dot/circle) when checked */
+.rad input:checked ~ .checkmark:after {
     display: block;
-  }
-
-.btn-danger {
-    outline: none;
-    border-radius: 8px !important;
-    width: 85px !important;
-    height: 35px !important;
-    background-color: #F73C4F !important;
 }
-/*.card1 {
-    margin-left: 140px;
-    z-index: 0;
-    border-right: 1px solid #F5F5F5
+.l1{
+    position: relative;
+    top: -5px;
+    font-size: large;
+	font-weight: 700;
 }
-#progressbar {
-    position: absolute;
-    left: 35px;
-    overflow: hidden;
-    color: #E53935
+.op{
+    text-align: left;
 }
-
-#progressbar li {
-    list-style-type: none;
-    font-size: 8px;
-    font-weight: 400;
-    margin-bottom: 36px
-}
-#progressbar li:nth-child(3) {
-    margin-bottom: 88px
-}
-
-#progressbar .step0:before {
-    content: "";
-    color: #fff
-}
-
-#progressbar li:before {
-    width: 30px;
-    height: 30px;
-    line-height: 30px;
-    display: block;
-    font-size: 20px;
-    background: #fff;
-    border: 2px solid #E53935;
-    border-radius: 50%;
-    margin: auto
-}
-
-#progressbar li:last-child:before {
-    width: 40px;
-    height: 40px
-}
-
-#progressbar li:after {
-    content: '';
-    width: 3px;
-    height: 66px;
-    background: #BDBDBD;
-    position: absolute;
-    left: 58px;
-    top: 15px;
-    z-index: -1
-}
-
-#progressbar li:last-child:after {
-    top: 147px;
-    height: 132px
-}
-
-#progressbar li:nth-child(3):after {
-    top: 81px
-}
-
-#progressbar li:nth-child(2):after {
-    top: 0px
-}
-
-#progressbar li:first-child:after {
-    position: absolute;
-    top: -81px
-}
-
-#progressbar li.active:after {
-    background: #E53935
-}
-
-#progressbar li.active:before {
-    background: #E53935;
-    font-family: FontAwesome;
-    content: "\f00c"
-}
-@media screen and (max-width: 912px) {
-    .card1 {
-        border: none;
-        margin-left: 50px
+.custom-control-input:checked~.custom-control-indicator{
+    color:white;
+    background-color:red;
     }
-    #progressbar {
-        left: -25px
-    }
-}*/
