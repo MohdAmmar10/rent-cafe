@@ -60,7 +60,9 @@
             }
             if($emailErr == "" && $passErr == "" && $cpassErr == "" && isset($_POST['submit']))
             {
-                $name=$_SESSION["name"];
+                
+                $fname=$_SESSION["fname"];
+                $lname=$_SESSION["lname"]; 
                 $gender=$_SESSION["gender"];
                 $d=$_SESSION["dob"];                
                 $phone=$_SESSION["phone"];
@@ -73,8 +75,13 @@
                 $password = $_POST['password'];
                 $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
                 $conn = mysqli_connect($server, $username, $pass, $dbname);
-                $query = "insert into client_details(name,gender,dob,phone,city,email,password) values('$name','$gender','$d','$phone','$city','$email','$hashedPassword')";
-                $run = mysqli_query($conn,$query);
+
+                $query="insert into client_details(fname,lname,gender,dob,phone,city,email,password) values(?,?,?,?,?,?,?,?)";
+                $pst=mysqli_prepare($conn,$query);
+                mysqli_stmt_bind_param($pst,"ssssisss",$fname,$lname,$gender,$d,$phone,$city,$email,$hashedPassword);
+                mysqli_stmt_execute($pst);
+                // $query = "insert into client_details(fname,lname,gender,dob,phone,city,email,password) values('$fname','$lname','$gender','$d','$phone','$city','$email','$hashedPassword')";
+                // $run = mysqli_query($conn,$query);
                 header("Location: prefer1.php");
             }        
         }
@@ -92,18 +99,18 @@
             <h2>&emsp;REGISTRATION</h2>
             <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
                 <br>
-                <label for="em">Email&emsp;</label>
-                <input type="text" name="email" id="name" autofocus autocomplete="OFF">
+                <label for="em">&emsp;&emsp;&emsp;&emsp;&emsp;Email&emsp;</label>
+                <input type="text" name="email" id="name" placeholder="Enter Email" autofocus autocomplete="OFF">
                 <span class="error">* <br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<?php echo $emailErr;?>
                 </span><br>
 
-                <label for="pass">Password&emsp;</label>
-                <input type="password" name="password" id="pass" autofocus autocomplete="OFF">
+                <label for="pass">&emsp;&emsp;&emsp;&emsp;Password</label>
+                <input type="password" name="password" id="pass" placeholder="Enter Password" autofocus autocomplete="OFF">
                 <span class="error">* <br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<?php echo $passErr;?>
                 </span><br>
 
-                <label for="pass">Confirm Password<!-- &emsp; --></label>
-                <input type="password" name="cpassword" id="pass" autofocus autocomplete="OFF">
+                <label for="pass">Confirm Password</label>
+                <input type="password" name="cpassword" id="pass" placeholder="Re-enter Password" autofocus autocomplete="OFF">
                 <span class="error">* <br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<?php echo $cpassErr;?>
                 </span><br>
                 
