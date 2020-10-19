@@ -38,7 +38,7 @@
 
         if(!$uppercase || !$lowercase || !$number || strlen($password) < 8) 
         {
-        $passErr="Password should be of 8 letters and contain uppercase and numbers";
+        $passErr="Wrong Pa";
         }
       }
       if($emailErr == "" && $passErr == "" && isset($_POST['clear']))
@@ -46,13 +46,18 @@
           setcookie('EMAIL',$_POST['email'],time()+ 3600);
           $server = "localhost";
           $username = "root";
-          $pass = "";
+          $passwrd = "";
           $dbname = "rent_cafe";
-          
-          $conn = mysqli_connect($server, $username, $pass, $dbname);
-          $query = "select email,password from client_details where email='$email'";
-          $result = mysqli_query($conn,$query);
-          if (mysqli_num_rows($result) > 0) {
+          $conn = mysqli_connect($server, $username, $passwrd, $dbname);
+          $query="SELECT email,password from client_details where email=(?)";
+          $pst=mysqli_prepare($conn,$query);
+          mysqli_stmt_bind_param($pst,"s",$email);
+          mysqli_stmt_execute($pst);
+          $result=mysqli_stmt_get_result($pst);
+          // $query = "SELECT email,password from client_details where email='$email'";
+          // $result = mysqli_query($conn,$query);
+          $count = mysqli_num_rows($result);
+          if ($count == 1) {
             while($row = mysqli_fetch_assoc($result)) 
             {
               if(password_verify($password, $row["password"]))
@@ -60,10 +65,11 @@
                 header("Location: home.php");
               }
             }
-            $passErr="Wrong Email or Password";
+            $passErr="Invalid Login credentials";
           } 
           else {
             $flag=1;
+            $passErr="Invalid Login credentials";
           }
     
           mysqli_close($conn);
@@ -86,7 +92,7 @@
         <div class="form_right col-sm-12 col-md-6 col-6">
         <h2>LOGIN</h2><br>	
         <?php if($flag==1 ): ?>
-          <a href="form.php" >New User? Goto SignUp page</a>
+          <a href="form.php" >New User? Create a new account</a>
           <br>
         <?php endif; ?>
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
@@ -100,7 +106,7 @@
         <input type="password" id="pass" name="pass" placeholder="Enter Password" autocomplete="OFF">
         <span class="error">*<br><?php if($_SERVER["REQUEST_METHOD"]=="POST"){ echo $passErr;}?></span>
         <br>
-        <p align="right"><a href="#" style="color:#4F66D0;">Forget Password?</a></p>
+        <p align="right"><a href="forgot.php" style="color:#4F66D0;">Forget Password?</a></p>
         
         <div class="subm">
         	<input type="submit" id="clear" name="clear" value="LOGIN" class="btn btn-primary cl">
