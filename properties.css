@@ -1,0 +1,112 @@
+/*
+*
+* ==========================================
+* FOR DEMO PURPOSES
+* ==========================================
+*
+*/
+
+body {
+    min-height: 100vh;
+    background: #fafafa;
+}
+
+
+.social-link {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666;
+    border-radius: 50%;
+    transition: all 0.3s;
+    font-size: 0.9rem;
+}
+
+.social-link:hover, .social-link:focus {
+    background: #ddd;
+    text-decoration: none;
+    color: #555;
+}
+
+.progress {
+    height: 10px;
+}
+
+
+
+
+
+
+
+.card {
+    background: #fff;
+    width: 250px;
+    height: 500px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+    border-radius: 5px;
+    box-shadow: 0px 10px 70px rgba(0, 0, 0, 0.15);
+  }
+  
+  .card-header {
+    height: 35%;
+    width: 100%;
+    padding: 0px;
+    overflow: hidden;
+  }
+  
+  .header-img {
+    height: 100%;
+    width: 100%;
+    background: url(https://source.unsplash.com/y3aP9oo9Pjc/500x500) left center;
+    background-size: 100%;
+    border-radius: inherit;
+    -webkit-transition: all ease-in-out .4s;
+    transition: all ease-in-out .4s;
+  }
+  
+  .card:hover .header-img {
+    -webkit-transform: scale(1.25) rotate(2deg);
+            transform: scale(1.25) rotate(2deg);
+  }
+  
+  .card-title {
+    font-family: 'Lato', sans-serif;
+    font-size: 14px;
+    line-height: 18px;
+    padding: 15px;
+  }
+  
+  .card-title h1 {
+    font-family: 'Catamaran', sans-serif;
+    text-transform: uppercase;
+    font-size: 30px;
+    line-height: 30px;
+    padding: 0px;
+  }
+  
+  .btn {
+    padding: 10px 20px;
+    position: absolute;
+    width: 60%;
+    left: 50%;
+    bottom: 30px;
+    -webkit-transform: translate(-50%, 0%);
+            transform: translate(-50%, 0%);
+    border: 1px solid turquoise;
+    border-radius: 100px;
+    text-align: center;
+    -webkit-transition: all ease-in-out .2s;
+    transition: all ease-in-out .2s;
+    cursor: pointer;
+  }
+  .btn:hover {
+    background: turquoise;
+    color: #fff;
+  }

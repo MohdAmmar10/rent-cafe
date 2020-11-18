@@ -29,7 +29,7 @@
         			<a class="nav-link" href="solution.html" style="margin-right: 1.2rem; font-weight: bold;">HOW IT WORKS</a>
       			</li>
       			<li class="nav-item">
-        			<a class="nav-link" href="team.html" style="margin-right: 1.2rem; font-weight: bold;">ABOUT US</a>
+        			<a class="nav-link" href="properties.php" style="margin-right: 1.2rem; font-weight: bold;">PROPERTIES</a>
 				</li>
 				<li class="nav-item">
         			<a class="nav-link" href="contact.html" style="margin-right: 1.2rem; font-weight: bold;">CONTACT US</a>
