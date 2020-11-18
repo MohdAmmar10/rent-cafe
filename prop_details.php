@@ -48,7 +48,7 @@
             <div class="col-sm-9">
                 <h4>2 BHK Flat</h4>
                 <p>800 sq.ft</p>
-                <p>K.D. Tower, Byculla, Mumbai
+                <p>K.D. Tower, Byculla, Mum
             </div>
             <div class="text-right col-sm-3 mt-2 ">
                 <h4 class="font-weight-bold mb-4">₹ 40,000</h4>
@@ -85,7 +85,6 @@
             <span class="sr-only">Next</span>
         </a>
         </div>
-    </div>
 
     
 </body>
