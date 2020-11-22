@@ -84,17 +84,17 @@
 							</tr>
 							
 							<tr>
-								<td><label for="bed" id="l1">Type of Bed:</label>&emsp;
+								<td><label for="bed" id="l1">Lift:</label>&emsp;
 								<td class="op"><label class="rad">
 									<input type="radio" name="bed" value="single">&emsp;<span class="checkmark"></span>
-									</label><span class="rad_label">Single</span></td>
+									</label><span class="rad_label">Yes</span></td>
 								<td class="op"><label class="rad">
 									<input type="radio" name="bed" value="double">&emsp;<span class="checkmark"></span>
-								</label><span class="rad_label">Double</td>
+								</label><span class="rad_label">No</td>
 							</tr>
 
 							<tr>
-								<td><label for="furniture" id="l1">Furniture Needed?</label></td>
+								<td><label for="furniture" id="l1">Furnished:</label></td>
 								<td class="op"><label class="rad">
 									<input type="radio" name="furniture" value="yes">&emsp;<span class="checkmark"></span>
 									</label><span class="rad_label">Yes</span></td>
