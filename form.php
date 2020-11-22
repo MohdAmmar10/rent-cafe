@@ -4,27 +4,39 @@
     <title>
         Rent Cafe
     </title>
-    <link rel="stylesheet" href="form.css">
+    <link rel="stylesheet" href="reg.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
     <?php
-        $name = $gender = $dob = $d = $phone = $city = "";
-        $nameVal = $genderVal = $dobVal = $phoneVal = $cityVal = "";
-        $nameErr = $genderErr = $dobErr = $phoneErr = $cityErr = "";
+        $fname = $lname= $gender = $dob = $d = $phone = $city = "";
+        $fnameVal = $lnameVal= $genderVal = $dobVal = $phoneVal = $cityVal = "";
+        $fnameErr = $lnameErr= $genderErr = $dobErr = $phoneErr = $cityErr = "";
         if ($_SERVER["REQUEST_METHOD"] == "POST")
         {            
-            if (empty($_POST["name"])) 
+            if (empty($_POST["fname"])) 
             {
-                    $nameErr = "Name is required<br>"; 
+                    $fnameErr = "Name is required<br>"; 
             } 
             else 
             { 
-                $name = $_POST["name"]; 
-                if (!preg_match("/^[a-zA-Z ]*$/",$name)) {
-                    $nameErr = "Only letters and white space allowed<br>"; 
+                $fname = $_POST["fname"]; 
+                if (!preg_match("/^[a-zA-Z ]*$/",$fname)) {
+                    $fnameErr = "Only letters and white space allowed<br>"; 
                 } 
             }
+            if (empty($_POST["lname"])) 
+            {
+                    $lnameErr = "Name is required<br>"; 
+            } 
+            else 
+            { 
+                $lname = $_POST["lname"]; 
+                if (!preg_match("/^[a-zA-Z ]*$/",$lname)) {
+                    $lnameErr = "Only letters and white space allowed<br>"; 
+                } 
+            }
+
             if(empty($_POST["gender"])){
                 $genderErr="Gender is required<br>";
             }
@@ -72,12 +84,13 @@
         }
         if(isset($_POST['clear']))
         {
-            $nameVal = $genderVal = $dobVal = $phoneVal = $cityVal = "";
-            $nameErr = $genderErr = $dobErr = $phoneErr = $cityErr = "";            
+            $fnameVal = $lnameVal = $genderVal = $dobVal = $phoneVal = $cityVal = "";
+            $fnameErr = $lnameErr =$genderErr = $dobErr = $phoneErr = $cityErr = "";            
         }
-        if($nameErr == "" && $genderErr == "" && $dobErr == "" && $phoneErr == "" && $cityErr == "" && isset($_POST['next']))
+        if($fnameErr == "" && $lnameErr == "" && $genderErr == "" && $dobErr == "" && $phoneErr == "" && $cityErr == "" && isset($_POST['next']))
         {
-            $_SESSION["name"] = $name;
+            $_SESSION["fname"] = $fname;
+            $_SESSION["lname"] = $lname;
             $_SESSION["gender"] = $gender;
             $_SESSION["dob"] = $d;
             $_SESSION["phone"] = $phone;
@@ -94,22 +107,27 @@
             header("Location: form2.php");
         }        
     ?>
-    <div id="fullcontainer" class="container bg-white justify-content-around">
-        <div class="row">
-            <div class="form_left col-12 col-md-6">
-                <img src="logoImage.svg" width="auto" height="470px" class="d-none d-md-block px-3">
+    
+        <div class="row container_form">
+            <div class="form_left col-sm-0 col-md-6 col-6">    
+                <img src="logoImage.svg" width="420px" height="470px">
             </div>
-            <div class="form_right col-12 col-md-6 justify-content-center">
+            <div class="form_right col-sm-12 col-md-6 col-6 justify-content-center">
+    
                 <br/>
                 <h2>&emsp;REGISTRATION</h2>
                 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
                     <br>
-                    <label for="fn">&emsp;&emsp;Name&emsp;</label>
-                    <input type="text" name="name" id="name" placeholder="Name" autofocus autocomplete="OFF" value="<?php echo $nameVal ?>" >
-                    <span class="error">* <br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<?php echo $nameErr;?></span><br>
+                    <label for="fn">&emsp;First Name</label>
+                    <input type="text" name="fname" id="fname" placeholder=" First Name" autofocus autocomplete="OFF" value="<?php echo $fnameVal ?>" >
+                    <span class="error">* <br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<?php echo $fnameErr;?></span><br>
                     <!-- <label for="ln">Email</label>
                     <input type="text" name="em" id="ln" placeholder="Email"  autocomplete="OFF">
                     <br><br> -->
+                    <label for="fn">&emsp;Last Name</label>
+                    <input type="text" name="lname" id="lname" placeholder="Last Name" autofocus autocomplete="OFF" value="<?php echo $lnameVal ?>" >
+                    <span class="error">* <br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<?php echo $lnameErr;?></span><br>
+
                     <label for="gender">&emsp;&emsp;Gender</label>&emsp;
                     <label class="rad">
                         <input type="radio" name="gender" value="male">
@@ -141,6 +159,6 @@
                 </form> 
             </div>
         </div>
-    </div>
+   
 </body>
 </html>

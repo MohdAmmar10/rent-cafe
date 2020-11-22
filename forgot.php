@@ -48,11 +48,11 @@
           $mail->isSMTP();
           $mail->Host = 'smtp.gmail.com';
           $mail->SMTPAuth = true;
-          $mail->Username = 'mohd.mansha@gmail.com';
-          $mail->Password = 'Mansha@456';
+          $mail->Username = 'rcafe034@gmail.com';
+          $mail->Password = 'rentcafe@123';
           $mail->SMTPSecure = 'tsl';
           $mail->Port = 587;
-          $mail->setFrom('mohd.mansha@gmail.com');
+          $mail->setFrom('rcafe034@gmail.com');
           $query = "SELECT fname,email,dob from client_details where email='$email' AND dob='$dob'";
           $result = mysqli_query($conn,$query);
           $count = mysqli_num_rows($result);
