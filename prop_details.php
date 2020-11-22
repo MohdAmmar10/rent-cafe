@@ -85,7 +85,33 @@
             <span class="sr-only">Next</span>
         </a>
         </div>
+
+        <div class="desc mt-4">
+            <h4>Description</h4>
+            <hr>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium laborum aliquam sit perferendis libero itaque, nostrum voluptas fugit? Nisi doloremque laborum libero autem ab cum molestiae laudantium necessitatibus consequuntur dignissimos!
+            </p>
+            <hr>
+            <div class="row mt-3 mb-4">
+                <div class="col-md-6">
+                    <p><strong>Rental Value:</strong> ₹ 40,000</p>
+                    <hr>
+                    <p><strong>Near Public Transport:</strong> Yes</p>
+                    <hr>
+                    <p><strong>Rectify Problem:</strong> Owner</p>
+                    <hr>
+                </div>
+                <div class="col-md-6 border-left border-secondary ">
+                    <p><strong>Ammentities:</strong> Wifi</p>
+                    <hr>
+                    <p><strong>Furnished:</strong> Fully Furnished</p>
+                    <hr>
+                    <p><strong>Lift Available:</strong> Yes</p>
+                    <hr>
+                </div>
+            </div>
+
+        </div>
     </div>
-    
 </body>
 </html>

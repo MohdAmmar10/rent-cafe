@@ -4,6 +4,7 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.js" integrity="sha256-DrT5NfxfbHvMHux31Lkhxg42LY6of8TaYyK50jnxRnM=" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
     <nav class="navbar sticky-top navbar-expand-md navbar-light bg-light">
@@ -59,6 +60,7 @@
                     <p class="small text-muted font-italic">Byculla, Mumbai</p>
                     <h5>₹ 40,000</h5>
                     <a class="cn-bt">Contact Now</a>
+                    <a class="fa fa-heart pull-right" href="#" style="font-size:30px;color:red"></a>
                 </div>
             </div>
             </a>
@@ -73,6 +75,7 @@
                     <p class="small text-muted font-italic">Colaba, Mumbai</p>
                     <h5>₹ 60,000</h5>
                     <a class="cn-bt">Contact Now</a>
+                    <a class="fa fa-heart pull-right" href="#" style="font-size:30px;color:red"></a>
                 </div>
             </div>
         </div>
@@ -85,6 +88,7 @@
                     <p class="small text-muted font-italic">Thane, Mumbai</p>
                     <h5>₹ 20,000</h5>
                     <a class="cn-bt">Contact Now</a>
+                    <a class="fa fa-heart pull-right" href="#" style="font-size:30px;color:red"></a>
                 </div>
             </div>
         </div>
@@ -97,6 +101,7 @@
                     <p class="small text-muted font-italic">Andheri, Mumbai</p>
                     <h5>₹ 50,000</h5>
                     <a class="cn-bt">Contact Now</a>
+                    <a class="fa fa-heart pull-right" href="#" style="font-size:30px;color:red"></a>
                 </div>
             </div>
         </div>
