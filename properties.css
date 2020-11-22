@@ -50,3 +50,6 @@
   a.custom-card:hover {
     color: inherit;
   }
+  #myModal,#exampleModalCenter {
+    -webkit-transform: translate3d(0, 0, 0);
+  }

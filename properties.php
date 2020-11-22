@@ -42,6 +42,49 @@
             mysqli_stmt_bind_param($pst,"si",$email,$_POST["pid"]);
             mysqli_stmt_execute($pst);
         }
+        if(isset($_POST["contact"])&&$_POST["contact"]=="Contact Now")
+        {
+            $server = "localhost";
+            $username = "root";
+            $pass = "";
+            $dbname = "rent_cafe";
+            // Create database connection
+            $db = new mysqli($server, $username, $pass, $dbname);
+            $conn = mysqli_connect($server, $username, $pass, $dbname);
+            // Check connection
+            if (!$conn) {
+            die("Connection failed: " . mysqli_connect_error());
+            }
+            $pid=$_POST["pid"];
+            $sql = "SELECT email FROM properties_details WHERE pid LIKE '%$pid%'";
+            $result = mysqli_query($conn, $sql);
+
+            if (mysqli_num_rows($result) > 0) {
+            // output data of each row
+            while($row = mysqli_fetch_assoc($result)) {
+                $pemail=$row['email'];
+            }
+            } else {
+            echo "0 results";
+            }
+            $sql = "SELECT * FROM client_details WHERE email LIKE '%$pemail%'";
+            $result = mysqli_query($conn, $sql);
+
+            if (mysqli_num_rows($result) > 0) {
+            // output data of each row
+            while($row = mysqli_fetch_assoc($result)) {
+                $pphone=$row["phone"];
+            }
+            } else {
+            echo "10 results";
+            }
+
+            mysqli_close($conn);
+
+
+
+
+        }
     ?>
     <nav class="navbar sticky-top navbar-expand-md navbar-light bg-light">
   		<img src="asset/Logo.svg">
@@ -87,7 +130,7 @@
     </div>
     <div class="col-md-4 align-self-center">
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" class="d-flex justify-content-end" method="post">
-        <i class="fa fa-search align-self-center mr-1" aria-hidden="true"></i> <input type="text" placeholder="Location" name="search"> <input style="background-color:#12213F; color:white; margin-left:5px" name="submit" type ="submit">
+        <i class="fa fa-search align-self-center mr-1" aria-hidden="true"></i> <input type="text" placeholder="Location" name="search"> <input style="background-color:#12213F; color:white; margin-left:5px" value="Search" name="submit" type ="submit">
         <br><span class="text-center"><?php echo $searchErr;?></span>
         </form>
     </div>
@@ -127,11 +170,12 @@
                 <div class="card-header"><img class="header-img" src="<?php echo $imageURL; ?>" alt="" class="img-fluid d-block mx-auto "></div>
                 <div class="card-body p-3">
                     <h5><?php echo $row["size"];?></h5>
-                    <p class="small text-muted font-italic"><?php echo $row["small_addr"];?></p>
+                    <p class="small text-muted font-italic"><?php echo $row["small_addr"];?>, Mumbai</p>
                     <h5>₹ <?php echo $row["price"];?></h5>
                     <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-                        <a class="cn-bt">Contact Now</a>
                         <input type="hidden" name="pid" value="<?php echo $row['pid']; ?>"/>
+                        <input class="cn-bt" id="myModal" value="Contact Now" type="submit" name="contact" data-toggle="modal" data-target="#exampleModalCenter"/>
+                        <!-- Modal -->
                         <button type="submit" name="fav" class="fa fa-heart pull-right" style="font-size:30px;color:red; border: 0; background-color: white;"></button>
                     </form>
 
@@ -139,11 +183,36 @@
                 </div>
             </div>
             </a>
+            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="exampleModalLongTitle">Owner Details</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <?php
+            
+            ?>
+            <div class="modal-body">
+                <p><strong>Email ID:</strong> <?php echo $pemail; ?></p>
+                <hr>
+                <p><strong>Phone No.:</strong> <?php echo $pphone; ?></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Contact Owner</button>
+            </div>
+            </div>
+        </div>
+        </div>
         </div>
         <?php }
         }else{ ?>
            <div class="d-flex m-auto justify-content-center"> <h4 class="text-center">No Properties Found ....</h4></div>
         <?php } ?>
+        
         <div class="col-lg-3 col-md-6 mb-4 mb-lg-2">
             <!-- Card-->
             <div class="card rounded shadow border-0">
