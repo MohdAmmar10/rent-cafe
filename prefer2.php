@@ -1,13 +1,4 @@
-<?php
-		if(isset($_POST['back']))
-		{
-			header("Location: prefer1.php");
-		}
-		if(isset($_POST['next']))
-		{
-			header("Location: prefer3.php");
-		}
-?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,6 +10,90 @@
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
+	<?php
+	$trans = $problem = $aminities = $lift = $furniture = "";
+	$Err="";
+	if ($_SERVER["REQUEST_METHOD"] == "POST")
+        { 
+        	if(empty($_POST["trans"])){
+                $Err="All fields are required<br>";
+            }
+            else
+            {
+                $trans=$_POST['trans'];
+            }
+            if(empty($_POST["problem"])){
+                $Err="All fields are required<br>";
+            }
+            else
+            {
+                $problem=$_POST['problem'];
+            }
+            if(isset($_POST['ammentites1'])){
+                $aminities .= $_POST['ammentites1'];
+                
+            }
+            
+            if(isset($_POST['ammentites2'])){
+            	$aminities .= ",";
+                $aminities .= $_POST['ammentites2'];
+                
+            }
+            
+            if(isset($_POST['ammentites3'])){
+            	$aminities .= ",";
+                $aminities .= $_POST['ammentites3'];
+
+
+            }
+            
+            if(empty($_POST["lift"])){
+                $Err="All fields are required<br>";
+            }
+            else
+            {
+                $list=$_POST['lift'];
+            }
+            if(empty($_POST["furniture"])){
+                $Err="All fields are required<br>";
+            }
+            else
+            {
+                $furniture=$_POST['furniture'];
+            }
+            
+            if($Err == "" && isset($_POST['next']))
+        {  
+        	$transval = $_POST['trans'];
+        	$problemval = $_POST['problem'];
+        	$liftval = $_POST['lift'];
+        	$furnitureval = $_POST['furniture'];
+        	$email = $_COOKIE['EMAIL'];
+        	$server = "localhost";
+            $username = "root";
+            $pass = "";
+            $dbname = "rent_cafe";
+            $conn = mysqli_connect($server, $username, $pass, $dbname);
+            $query="insert into apartpref(email,transport,problem,aminities,lift,furniture) values(?,?,?,?,?,?)";
+                $pst=mysqli_prepare($conn,$query);
+                mysqli_stmt_bind_param($pst,"ssssss",$email,$transval,$problemval,$aminities,$liftval,$furnitureval);
+                mysqli_stmt_execute($pst);
+
+            
+
+            header("Location: prefer3.php");
+        }
+    }
+    if(isset($_POST['back']))
+        {
+            header("Location: prefer1.php");
+        }
+
+
+            
+
+
+	?>
 	<div id="fullcontainer" class="container bg-white justify-content-around">
         <div class="row">
         	<div class="form_left col-12 col-md-6">
@@ -73,23 +148,23 @@
 							<tr>
 								<td><label for="ammenty" id="l1">What ammentites you want?</label></td>
 								<td class="op"><label class="checkbox-inline">
-									<input type="checkbox" id="customCheck" value="wifi" name="ammentites">&emsp;
+									<input type="checkbox" id="customCheck" value="wifi" name="ammentites1">&emsp;
 									</label><span class="rad_label">WIFI</span></td>
 								<td class="op"><label class="checkbox-inline">
-									<input type="checkbox" id="customCheck" value="ac" name="ammentites">&emsp;
+									<input type="checkbox" id="customCheck" value="ac" name="ammentites2">&emsp;
 									</label><span class="rad_label">AC</span></td>
 								<td class="op"><label class="checkbox-inline">
-									<input type="checkbox" id="customCheck" value="tv" name="ammentites">&emsp;
+									<input type="checkbox" id="customCheck" value="tv" name="ammentites3">&emsp;
 									</label><span class="rad_label">TV</span></td>
 							</tr>
 							
 							<tr>
 								<td><label for="bed" id="l1">Lift:</label>&emsp;
 								<td class="op"><label class="rad">
-									<input type="radio" name="bed" value="single">&emsp;<span class="checkmark"></span>
+									<input type="radio" name="lift" value="yes">&emsp;<span class="checkmark"></span>
 									</label><span class="rad_label">Yes</span></td>
 								<td class="op"><label class="rad">
-									<input type="radio" name="bed" value="double">&emsp;<span class="checkmark"></span>
+									<input type="radio" name="lift" value="no">&emsp;<span class="checkmark"></span>
 								</label><span class="rad_label">No</td>
 							</tr>
 
@@ -101,6 +176,11 @@
 								<td class="op"><label class="rad">
 									<input type="radio" name="furniture" value="no">&emsp;<span class="checkmark"></span>
 								</label><span class="rad_label">No</span></td>
+							</tr>
+						</table>
+						<table>
+							<tr>
+								<span class="error" style="color: red;"><br>&emsp;&emsp;<?php echo $Err;?></span><br>
 							</tr>
 						</table>
 						<div class="subm" style="margin-bottom: 5%;">&emsp;&emsp;&emsp;&emsp;
