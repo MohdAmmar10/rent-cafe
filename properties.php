@@ -48,25 +48,49 @@
     <!-- First Row [Prosucts]-->
     <h2 class="font-weight-bold mb-2">From the Shop</h2>
     <p class="font-italic text-muted mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
-    
     <div class="row pb-5 mb-4">
-        <div class="col-lg-3 col-md-6 mb-4 mb-lg-0 mx-auto">
+    <?php
+        $server = "localhost";
+        $username = "root";
+        $pass = "";
+        $dbname = "rent_cafe";
+
+        // Create database connection
+        $db = new mysqli($server, $username, $pass, $dbname);
+
+        // Check connection
+        if ($db->connect_error) {
+            die("Connection failed: " . $db->connect_error);
+        }
+
+        // Get images from the database
+        $query = $db->query("SELECT * FROM properties_details ORDER BY pid ASC");
+
+        if($query->num_rows > 0){
+            while($row = $query->fetch_assoc()){
+                $imageURL = 'asset/'.$row["cover_pic"];
+        ?>
+       
+        <div class="col-lg-3 col-md-6 mb-4 mb-lg-2 mx-auto">
             <!-- Card-->
             <a class="custom-card" href="prop_details.php">
             <div class="card rounded shadow border-0">
-                <div class="card-header"><img class="header-img" src="asset/prop1.jpg" alt="" class="img-fluid d-block mx-auto "></div>
+                <div class="card-header"><img class="header-img" src="<?php echo $imageURL; ?>" alt="" class="img-fluid d-block mx-auto "></div>
                 <div class="card-body p-3">
-                    <h5>2 BHK Flat</h5>
-                    <p class="small text-muted font-italic">Byculla, Mumbai</p>
-                    <h5>₹ 40,000</h5>
+                    <h5><?php echo $row["size"];?></h5>
+                    <p class="small text-muted font-italic"><?php echo $row["small_addr"];?></p>
+                    <h5>₹ <?php echo $row["price"];?></h5>
                     <a class="cn-bt">Contact Now</a>
                     <a class="fa fa-heart pull-right" href="#" style="font-size:30px;color:red"></a>
                 </div>
             </div>
             </a>
         </div>
-        
-        <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+        <?php }
+        }else{ ?>
+            <p>No image(s) found...</p>
+        <?php } ?>
+        <div class="col-lg-3 col-md-6 mb-4 mb-lg-2">
             <!-- Card-->
             <div class="card rounded shadow border-0">
                 <div class="card-header"><img class="header-img" src="asset/prop2.jpg" alt="" class="img-fluid d-block mx-auto "></div>
