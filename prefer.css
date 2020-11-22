@@ -138,6 +138,10 @@ li:nth-child(odd) {
     background-color: #C4C4C4;
     border-radius: 50%;
 }
+.error
+{
+    color: red;
+}
 /* On mouse-over, add a grey background color */
 .rad:hover input ~ .checkmark {
     background-color: #C4C4C4;
