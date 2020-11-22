@@ -64,7 +64,7 @@
                 <div class="data">
 	            
 	                <label for="fn">&emsp;&emsp;Name&emsp; </label>
-	                <span><?php echo $_SESSION["fname"] .$_SESSION["lname"];?></span>
+	                <span><?php echo $_SESSION["fname"]." ".$_SESSION["lname"];?></span>
 	       
                     <br>
                     

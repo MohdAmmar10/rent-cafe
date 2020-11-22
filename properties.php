@@ -1,3 +1,4 @@
+<?php session_start();?>
 <html>
 <head>
     <link rel="stylesheet" href="properties.css">
@@ -7,6 +8,41 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
+    <?php
+        $search=0;
+        $faver=$loc=$searchErr="";
+        if(isset($_POST["submit"]))
+        {
+            if (empty($_POST["search"])) 
+            {
+                $searchErr = 'Location is Required';
+            }
+            else
+            {
+                $loc=$_POST["search"];
+                $search=1;
+            }
+        }
+        if(isset($_POST["fav"]))
+        {
+            $server = "localhost";
+            $username = "root";
+            $pass = "";
+            $dbname = "rent_cafe";
+
+            // Create database connection
+            $conn = mysqli_connect($server, $username, $pass, $dbname);
+            $email= $_COOKIE['EMAIL'];
+            // Check connection
+            if ($conn->connect_error) {
+                die("Connection failed: " . $db->connect_error);
+            }
+            $query="insert into saved_later(email,fpid) values(?,?)";
+            $pst=mysqli_prepare($conn,$query);
+            mysqli_stmt_bind_param($pst,"si",$email,$_POST["pid"]);
+            mysqli_stmt_execute($pst);
+        }
+    ?>
     <nav class="navbar sticky-top navbar-expand-md navbar-light bg-light">
   		<img src="asset/Logo.svg">
   		<button class="navbar-toggler" data-toggle="collapse" data-target="#navlinks" aria-label="Togglenavigation">
@@ -44,10 +80,20 @@
     		</ul>
   		</div>
 	</nav>
-<div class="container py-5">
+<div class="row mt-4 mx-4">
+    <div class="col-md-8">
+        <h2 class="font-weight-bold mb-2 text-left">Properties for Rent</h2>
+        <p class="font-italic text-muted text-left mb-4">Properties compatible with your preference</p>
+    </div>
+    <div class="col-md-4 align-self-center">
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" class="d-flex justify-content-end" method="post">
+        <i class="fa fa-search align-self-center mr-1" aria-hidden="true"></i> <input type="text" placeholder="Location" name="search"> <input style="background-color:#12213F; color:white; margin-left:5px" name="submit" type ="submit">
+        <br><span class="text-center"><?php echo $searchErr;?></span>
+        </form>
+    </div>
+</div>
+<div class="container pb-5 pt-2">
     <!-- First Row [Prosucts]-->
-    <h2 class="font-weight-bold mb-2">From the Shop</h2>
-    <p class="font-italic text-muted mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
     <div class="row pb-5 mb-4">
     <?php
         $server = "localhost";
@@ -64,14 +110,17 @@
         }
 
         // Get images from the database
-        $query = $db->query("SELECT * FROM properties_details ORDER BY pid ASC");
+        if($search==0)
+        {$query = $db->query("SELECT * FROM properties_details ORDER BY pid ASC");}
+        else
+        {$query = $db->query("SELECT * FROM properties_details WHERE small_addr LIKE '%$loc%'");}
 
         if($query->num_rows > 0){
             while($row = $query->fetch_assoc()){
                 $imageURL = 'asset/'.$row["cover_pic"];
         ?>
        
-        <div class="col-lg-3 col-md-6 mb-4 mb-lg-2 mx-auto">
+        <div class="col-lg-3 col-md-6 mb-4 mx-auto">
             <!-- Card-->
             <a class="custom-card" href="prop_details.php">
             <div class="card rounded shadow border-0">
@@ -80,15 +129,20 @@
                     <h5><?php echo $row["size"];?></h5>
                     <p class="small text-muted font-italic"><?php echo $row["small_addr"];?></p>
                     <h5>₹ <?php echo $row["price"];?></h5>
-                    <a class="cn-bt">Contact Now</a>
-                    <a class="fa fa-heart pull-right" href="#" style="font-size:30px;color:red"></a>
+                    <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+                        <a class="cn-bt">Contact Now</a>
+                        <input type="hidden" name="pid" value="<?php echo $row['pid']; ?>"/>
+                        <button type="submit" name="fav" class="fa fa-heart pull-right" style="font-size:30px;color:red; border: 0; background-color: white;"></button>
+                    </form>
+
+                    <!-- <a class="fa fa-heart pull-right" href="#" style="font-size:30px;color:red"></a> -->
                 </div>
             </div>
             </a>
         </div>
         <?php }
         }else{ ?>
-            <p>No image(s) found...</p>
+           <div class="d-flex m-auto justify-content-center"> <h4 class="text-center">No Properties Found ....</h4></div>
         <?php } ?>
         <div class="col-lg-3 col-md-6 mb-4 mb-lg-2">
             <!-- Card-->
@@ -98,6 +152,7 @@
                     <h5>2 BHK Flat</h5>
                     <p class="small text-muted font-italic">Colaba, Mumbai</p>
                     <h5>₹ 60,000</h5>
+                    
                     <a class="cn-bt">Contact Now</a>
                     <a class="fa fa-heart pull-right" href="#" style="font-size:30px;color:red"></a>
                 </div>
