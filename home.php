@@ -3,6 +3,7 @@
 <head>
 	<title>Rent Cafe</title>
 	<link rel="stylesheet" href="home.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 	<link href="https://fonts.googleapis.com/css2?family=Lato:ital@0;1&display=swap" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
@@ -32,7 +33,7 @@
         			<a class="nav-link" href="properties.php" style="margin-right: 1.2rem; font-weight: bold;">PROPERTIES</a>
 				</li>
 				<li class="nav-item">
-        			<a class="nav-link" href="contact.html" style="margin-right: 1.2rem; font-weight: bold;">CONTACT US</a>
+        			<a class="nav-link" href="mylist.php" style="margin-right: 1.2rem; font-weight: bold;">MY LISTING</a>
 				</li>
 				<?php if(isset($_COOKIE['EMAIL'])) : ?>
 					<li class="nav-item">
