@@ -90,7 +90,7 @@
        
        <div class="col-lg-3 col-md-6 mb-4 mx-auto">
             <!-- Card-->
-            <a class="custom-card" href="prop_details.php">
+            <a class="custom-card" href="prop_details.php?id=<?php echo $row["pid"];?>">
             <div class="card rounded shadow border-0">
                 <div class="card-header"><img class="header-img" src="<?php echo $imageURL; ?>" alt="" class="img-fluid d-block mx-auto "></div>
                 <div class="card-body p-3">
