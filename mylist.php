@@ -128,8 +128,9 @@
                     <p class="small text-muted font-italic"><?php echo $row["small_addr"];?></p>
                     <h5>₹ <?php echo $row["price"];?></h5>
                     <form method="get" class="d-flex justify-content-around" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-						<a href="updatepost.php?id=<?php echo $row["pid"]?>" class="btn btn-primary" style="margin-right: 0.75rem;background-color: #12213F!important;">Update</a>
-                        <a href="#" class="btn btn-primary" style="margin-right: 0.75rem;background-color: #12213F!important;">Delete</a>
+						
+                        <a href="updatepost.php?id=<?php echo $row["pid"];?>" class="btn btn-primary" style="margin-right: 0.75rem;background-color: #12213F!important;">Update</a>
+                        <a href="deleteprocess.php?id=<?php echo $row["pid"];?>" class="btn btn-primary" style="margin-right: 0.75rem;background-color: #12213F!important;">Delete</a>
                     </form>
 
                     <!-- <a class="fa fa-heart pull-right" href="#" style="font-size:30px;color:red"></a> -->
