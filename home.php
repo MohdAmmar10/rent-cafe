@@ -43,6 +43,9 @@
 						<a href="profile.php" class="nav-link" style="margin-right: 1.2rem; font-weight: bold;"><?php echo $_COOKIE['EMAIL'];?></a>
 					</li>
 					<li class="nav-item">
+						<a href="notifications.php" class="nav-link" style="margin-right: 1.2rem; font-weight: bold;"><i class="fas fa-bell"></i></a>
+					</li>
+					<li class="nav-item">
 						<a href="delete.php" class="btn btn-primary" style="background-color: #12213F!important;">LOGOUT</a>
 					</li>
 				<?php else : ?>

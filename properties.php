@@ -135,29 +135,32 @@
     		</ul>
   		</div>
 	</nav>
-<div class="row mt-4 mx-4">
-    <div class="col-md-8">
+
+<div class="container pb-5 pt-2">
+<div class="row mt-4 ">
+    <div class="col-md-5">
         <h2 class="font-weight-bold mb-2 text-left">Properties for Rent</h2>
-        <?php if($flagm==1) : ?>
+        <?php if($flagm==1 && isset($_COOKIE["EMAIL"])) : ?>
         <p class="font-italic text-muted text-left mb-4">Properties compatible with your preference</p>
         <?php else :?>
             <p class="font-italic text-muted text-left mb-4">All Properties</p>
         <?php endif;?>
 
     </div>
-    <div class="col-md-4 align-self-center">
+    <div class="col-md-7 align-self-center">
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" class="d-flex justify-content-end" method="post">
-        <?php if($flagm==0) :
-        ?><input style="background-color:#12213F; color:white; margin-left:5px;margin-right:5px;" value="See Matching Properties" name="matchpref" type ="submit"><?php
-        else :
-        ?><input style="background-color:#12213F; color:white; margin-left:5px;margin-right:5px;" value="See All Properties" name="allpref" type ="submit"><?php
-    endif;?>
-        <i class="fa fa-search align-self-center mr-1" aria-hidden="true"></i> <input type="text" placeholder="Location" name="search"> <input style="background-color:#12213F; color:white; margin-left:5px" value="Search" name="submit" type ="submit">
+        <?php if($flagm==0 && isset($_COOKIE["EMAIL"])) :
+        ?><input style="background-color:#12213F; color:white; " value="See Matching Properties" name="matchpref" type ="submit"><?php
+        elseif ($flagm==1 && isset($_COOKIE["EMAIL"])) :
+        ?><input style="background-color:#12213F; color:white; margin-left:5px;margin-right:5px;" value="See All Properties" name="allpref" type ="submit">
+        <?php else :?>
+        <p>To see properties matching your preference <a href="login.php">Login</a> </p>
+        <?php endif;?>
+        <i class="fa fa-search align-self-center ml-2 mr-1" aria-hidden="true"></i> <input type="text" placeholder="Location" name="search"> <input style="background-color:#12213F; color:white; margin-left:5px" value="Search" name="submit" type ="submit">
         <br><span class="text-center"><?php echo $searchErr;?></span>
         </form>
     </div>
 </div>
-<div class="container pb-5 pt-2">
     <!-- First Row [Prosucts]-->
     <div class="row pb-5 mb-4">
     <?php
@@ -173,10 +176,11 @@
         if ($db->connect_error) {
             die("Connection failed: " . $db->connect_error);
         }
-        $email=$_COOKIE["EMAIL"];
+        if (isset($_COOKIE["EMAIL"]))
+            {$email=$_COOKIE["EMAIL"];}
         if($search==0)
         {   
-        if($flagm==1)
+        if($flagm==1 && isset($_COOKIE["EMAIL"]))
         {
         $allem=array();
         $q1=$db->query("SELECT food, smoke, drink from lifestyle where email like '%$email%'");
@@ -206,13 +210,17 @@
             
             $query = $db->query("$query");
         }
-        if($flagm==0)
-        {$query = $db->query("SELECT * FROM properties_details ORDER BY pid ASC");}
+        if($flagm==0 && isset($_COOKIE["EMAIL"]))
+        {$query = $db->query("SELECT * FROM properties_details where email not like'%$email%'  ORDER BY pid ASC");}
+        elseif(!isset($_COOKIE["EMAIL"]))
+        {
+            {$query = $db->query("SELECT * FROM properties_details ORDER BY pid ASC");}
+        }
     }
         else
         {$query = $db->query("SELECT * FROM properties_details WHERE small_addr LIKE '%$loc%'");}
-
-        if($query->num_rows > 0){
+        if(isset($query->num_rows))
+        {if($query->num_rows > 0){
             while($row = $query->fetch_assoc()){
                 $imageURL = 'asset/'.$row["cover_pic"];
         ?>
@@ -226,43 +234,21 @@
                     <h5><?php echo $row["size"];?></h5>
                     <p class="small text-muted font-italic"><?php echo $row["small_addr"];?>, Mumbai</p>
                     <h5>₹ <?php echo $row["price"];?></h5>
+                    <?php if(isset($_COOKIE["EMAIL"])) : ?>
                     <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
                         <input type="hidden" name="pid" value="<?php echo $row['pid']; ?>"/>
-                        <input class="cn-bt" id="myModal" value="Contact Now" type="submit" name="contact" data-toggle="modal" data-target="#exampleModalCenter"/>
+                        <a href="contact.php?id=<?php echo $row["pid"];?>" class="cn-bt" >Contact Now</a>
                         <!-- Modal -->
                         <button type="submit" name="fav" class="fa fa-heart pull-right" style="font-size:30px;color:red; border: 0; background-color: white;"></button>
                     </form>
+                    <?php endif; ?>
 
                     <!-- <a class="fa fa-heart pull-right" href="#" style="font-size:30px;color:red"></a> -->
                 </div>
             </div>
             </a>
-            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title" id="exampleModalLongTitle">Owner Details</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <?php
-            
-            ?>
-            <div class="modal-body">
-                <p><strong>Email ID:</strong> <?php echo $pemail; ?></p>
-                <hr>
-                <p><strong>Phone No.:</strong> <?php echo $pphone; ?></p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Contact Owner</button>
-            </div>
-            </div>
         </div>
-        </div>
-        </div>
-        <?php }
+        <?php }}
         }else{ ?>
            <div class="d-flex m-auto justify-content-center"> <h4 class="text-center">No Properties Found ....</h4></div>
         <?php } ?>
