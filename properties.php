@@ -10,7 +10,16 @@
 <body>
     <?php
         $search=0;
+        $flagm=0;
         $faver=$loc=$searchErr="";
+        if(isset($_POST["matchpref"]))
+        {
+            $flagm=1;
+        }
+        if(isset($_POST["allpref"]))
+        {
+            $flagm=0;
+        }
         if(isset($_POST["submit"]))
         {
             if (empty($_POST["search"])) 
@@ -129,10 +138,20 @@
 <div class="row mt-4 mx-4">
     <div class="col-md-8">
         <h2 class="font-weight-bold mb-2 text-left">Properties for Rent</h2>
+        <?php if($flagm==1) : ?>
         <p class="font-italic text-muted text-left mb-4">Properties compatible with your preference</p>
+        <?php else :?>
+            <p class="font-italic text-muted text-left mb-4">All Properties</p>
+        <?php endif;?>
+
     </div>
     <div class="col-md-4 align-self-center">
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" class="d-flex justify-content-end" method="post">
+        <?php if($flagm==0) :
+        ?><input style="background-color:#12213F; color:white; margin-left:5px;margin-right:5px;" value="See Matching Properties" name="matchpref" type ="submit"><?php
+        else :
+        ?><input style="background-color:#12213F; color:white; margin-left:5px;margin-right:5px;" value="See All Properties" name="allpref" type ="submit"><?php
+    endif;?>
         <i class="fa fa-search align-self-center mr-1" aria-hidden="true"></i> <input type="text" placeholder="Location" name="search"> <input style="background-color:#12213F; color:white; margin-left:5px" value="Search" name="submit" type ="submit">
         <br><span class="text-center"><?php echo $searchErr;?></span>
         </form>
@@ -154,10 +173,42 @@
         if ($db->connect_error) {
             die("Connection failed: " . $db->connect_error);
         }
-
-        // Get images from the database
+        $email=$_COOKIE["EMAIL"];
         if($search==0)
+        {   
+        if($flagm==1)
+        {
+        $allem=array();
+        $q1=$db->query("SELECT food, smoke, drink from lifestyle where email like '%$email%'");
+        while($row = $q1->fetch_assoc()){
+            $ufood=$row["food"];
+            $usmoke=$row["smoke"];
+            $udrink=$row["drink"];
+        }
+        $q2=$db->query("SELECT email from roommatepref where food like '%$ufood%' and smoke like '%$usmoke%' and drink like '%$udrink%' and email not like '%$email%'");
+        while($row = $q2->fetch_assoc()){
+            array_push($allem,$row["email"]);
+        }
+        // die($allem);
+        // Get images from the database
+        $query = 'SELECT * FROM properties_details WHERE ';
+            $first = true;
+            foreach ($allem as $name) {
+                if ($first) {
+                    $query .= '`email` LIKE "%'.$name.'%" ';
+                    $first  = false;
+                } else {
+                     $query .= 'OR `email` LIKE "%'.$name.'%" ';
+
+                }
+            }
+            
+            
+            $query = $db->query("$query");
+        }
+        if($flagm==0)
         {$query = $db->query("SELECT * FROM properties_details ORDER BY pid ASC");}
+    }
         else
         {$query = $db->query("SELECT * FROM properties_details WHERE small_addr LIKE '%$loc%'");}
 
