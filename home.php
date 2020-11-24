@@ -32,10 +32,13 @@
       			<li class="nav-item">
         			<a class="nav-link" href="properties.php" style="margin-right: 1.2rem; font-weight: bold;">PROPERTIES</a>
 				</li>
-				<li class="nav-item">
-        			<a class="nav-link" href="mylist.php" style="margin-right: 1.2rem; font-weight: bold;">MY LISTING</a>
-				</li>
 				<?php if(isset($_COOKIE['EMAIL'])) : ?>
+					<li class="nav-item">
+						<a class="nav-link" href="mylist.php" style="margin-right: 1.2rem; font-weight: bold;">MY LISTING</a>
+					</li>
+					<li class="nav-item">
+        			<a class="nav-link" href="myfav.php" style="margin-right: 1.2rem; font-weight: bold;">MY FAVOURITES</a>
+					</li>	
 					<li class="nav-item">
 						<a href="profile.php" class="nav-link" style="margin-right: 1.2rem; font-weight: bold;"><?php echo $_COOKIE['EMAIL'];?></a>
 					</li>

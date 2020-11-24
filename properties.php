@@ -86,7 +86,7 @@
 
         }
     ?>
-    <nav class="navbar sticky-top navbar-expand-md navbar-light bg-light">
+	<nav class="navbar sticky-top navbar-expand-md navbar-light bg-light">
   		<img src="asset/Logo.svg">
   		<button class="navbar-toggler" data-toggle="collapse" data-target="#navlinks" aria-label="Togglenavigation">
     		<span class="navbar-toggler-icon"></span>
@@ -102,10 +102,13 @@
       			<li class="nav-item">
         			<a class="nav-link" href="properties.php" style="margin-right: 1.2rem; font-weight: bold;">PROPERTIES</a>
 				</li>
-				<li class="nav-item">
-        			<a class="nav-link" href="contact.html" style="margin-right: 1.2rem; font-weight: bold;">CONTACT US</a>
-				</li>
 				<?php if(isset($_COOKIE['EMAIL'])) : ?>
+					<li class="nav-item">
+						<a class="nav-link" href="mylist.php" style="margin-right: 1.2rem; font-weight: bold;">MY LISTING</a>
+					</li>
+					<li class="nav-item">
+        			<a class="nav-link" href="myfav.php" style="margin-right: 1.2rem; font-weight: bold;">MY FAVOURITES</a>
+					</li>	
 					<li class="nav-item">
 						<a href="profile.php" class="nav-link" style="margin-right: 1.2rem; font-weight: bold;"><?php echo $_COOKIE['EMAIL'];?></a>
 					</li>
@@ -213,46 +216,6 @@
            <div class="d-flex m-auto justify-content-center"> <h4 class="text-center">No Properties Found ....</h4></div>
         <?php } ?>
         
-        <div class="col-lg-3 col-md-6 mb-4 mb-lg-2">
-            <!-- Card-->
-            <div class="card rounded shadow border-0">
-                <div class="card-header"><img class="header-img" src="asset/prop2.jpg" alt="" class="img-fluid d-block mx-auto "></div>
-                <div class="card-body p-3">
-                    <h5>2 BHK Flat</h5>
-                    <p class="small text-muted font-italic">Colaba, Mumbai</p>
-                    <h5>₹ 60,000</h5>
-                    
-                    <a class="cn-bt">Contact Now</a>
-                    <a class="fa fa-heart pull-right" href="#" style="font-size:30px;color:red"></a>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
-            <!-- Card-->
-            <div class="card rounded shadow border-0">
-                <div class="card-header"><img class="header-img" src="asset/prop3.jpg" alt="" class="img-fluid d-block mx-auto "></div>
-                <div class="card-body p-3">
-                    <h5>1 BHK Flat</h5>
-                    <p class="small text-muted font-italic">Thane, Mumbai</p>
-                    <h5>₹ 20,000</h5>
-                    <a class="cn-bt">Contact Now</a>
-                    <a class="fa fa-heart pull-right" href="#" style="font-size:30px;color:red"></a>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
-            <!-- Card-->
-            <div class="card rounded shadow border-0">
-                <div class="card-header"><img class="header-img" src="asset/prop4.jpg" alt="" class="img-fluid d-block mx-auto "></div>
-                <div class="card-body p-3">
-                    <h5>1 BHK Flat</h5>
-                    <p class="small text-muted font-italic">Andheri, Mumbai</p>
-                    <h5>₹ 50,000</h5>
-                    <a class="cn-bt">Contact Now</a>
-                    <a class="fa fa-heart pull-right" href="#" style="font-size:30px;color:red"></a>
-                </div>
-            </div>
-        </div>
     </div>
 </div>
 
