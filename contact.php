@@ -1,4 +1,9 @@
-<?php session_start();?>
+<?php session_start();
+require 'phpmailer/PHPMailer.php';
+require 'phpmailer/SMTP.php';
+require 'phpmailer/Exception.php';
+
+?>
 <html>
 <head>
     <link rel="stylesheet" href="contact.css">
@@ -50,11 +55,12 @@
   		</div>
 	</nav>
     <?php
+    $dobErr ="";
         $server = "localhost";
         $username = "root";
         $pass = "";
         $dbname = "rent_cafe";
-
+        $conn = mysqli_connect($server, $username, $pass, $dbname);
         // Create database connection
         $db = new mysqli($server, $username, $pass, $dbname);
 
@@ -79,7 +85,77 @@
                 $phone=$row["phone"];
             }
         }
+
         $uemail=$_COOKIE["EMAIL"];
+
+    $query2 = "SELECT fname,lname from client_details where email='$email'";
+    $result1 = mysqli_query($conn,$query2);
+    $row4 = mysqli_fetch_assoc($result1);
+    $ownerfname = $row4['fname'];
+    $ownerlname = $row4['lname'];
+
+    $query3 = "SELECT size,small_addr from properties_details where pid='$pid'";
+    $result2 = mysqli_query($conn,$query3);
+    $row2 = mysqli_fetch_assoc($result2);
+    $size = $row2['size'];
+    $small_addr = $row2['small_addr'];
+    
+    if(isset($_POST["notify"]))
+        { 
+
+            $server = "localhost";
+            $username = "root";
+            $pass = "";
+            $dbname = "rent_cafe";
+            // $db = new mysqli($server, $username, $pass, $dbname);
+            $conn = mysqli_connect($server, $username, $pass, $dbname);
+            if (!$conn) {
+                die("Connection failed: " . mysqli_connect_error());
+            }
+
+            $query7="insert into notify(owneremail,uemail,pid) values(?,?,?)";
+            $pst=mysqli_prepare($conn,$query7);
+            mysqli_stmt_bind_param($pst,"ssi",$email,$uemail,$pid);
+            mysqli_stmt_execute($pst);
+// die($email.$uemail.$pid);
+
+            $mail = new PHPMailer\PHPMailer\PHPMailer;
+            $mail->isSMTP();
+            $mail->Host = 'smtp.gmail.com';
+            $mail->SMTPAuth = true;
+            $mail->Username = 'rcafe034@gmail.com';
+            $mail->Password = 'rentcafe@123';
+            $mail->SMTPSecure = 'tsl';
+            $mail->Port = 587;
+            $mail->setFrom('rcafe034@gmail.com');
+            $query1 = "SELECT fname,lname,email,phone from client_details where email='$uemail'";
+            $result = mysqli_query($conn,$query1);
+            $row6 = mysqli_fetch_assoc($result);
+            $ufname=$row6['fname'];
+            $ulname=$row6['lname'];
+            $uphonet= $row6['phone'];
+            $mail->addAddress($email);
+            $mail->isHTML(true);
+            $mail->Subject = 'NOTIFICATION: Response on property ad posted on RentCafe ';
+            $mail->Body    = '<h3><b>Hello '.$ownerfname.' '.$ownerlname.'</b></h3>This mail from RENTCAFE is to notify you that you
+            have a response to your property ad posted on rent cafe.<br>'.$ufname.' '.$ulname.' is interested in your '.$size.' '.$small_addr.' property<br> Following are the contact details of '.$ufname.
+            ' :<br> PHONE NUMBER : '.$uphonet.'<br>EMAIL: '.$uemail;
+            $mail->AltBody ='This is the body in plain text for non-HTML mail clients';
+
+        
+
+        if(!$mail->send()) 
+      {
+        $dobErr = 'Something went wrong Try again!';
+ 
+      }
+      
+      else 
+      { $dobErr = 'A notification mail has been sent to user';
+        // header("Location: contact.php?id=$pid");
+      }
+    }
+        
         ?>
     <div class="ct text-center ">
     <table class="table">
@@ -108,7 +184,10 @@
             </tr>
         </tbody>
     </table>
-    <a  class="btn btn-primary ml-3" style="margin-right: 0.75rem;background-color: #12213F!important;" href="notify.php?id=<?php echo$pid;?>&uemail=<?php echo $uemail;?>&owneremail=<?php echo $email;?>">Notify Owner</a> 
+    <form action="" method="POSt">
+    <input type="submit" id="notify" class="btn btn-primary ml-3" style="margin-right: 0.75rem;background-color: #12213F!important;" value="Notify Owner" name="notify"/> 
+    </form>
+    <?php echo $dobErr;?>
     </div>
     </body>
 </html>
