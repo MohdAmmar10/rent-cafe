@@ -156,37 +156,34 @@ require 'phpmailer/Exception.php';
     }
         
         ?>
-    <div class="ct text-center ">
-    <table class="table">
-        <thead>
-            <tr align="center">
-                <th scope="col">Owner Contact Details</th>
-                <!-- <th scope="col">Input</th>
-                <th scope="col">Output</th> -->
-            </tr>
-        </thead>
-        <tbody>
-            <tr align="center">
-                <!-- <th scope="row">1</th>	 -->
-                <td>Owner Name</td>
-                <td><?php echo $fname." ".$lname;?></td>
-            </tr>
-            <tr align="center">
-                <!-- <th scope="row">2</th>	 -->
-                <td>Email</td>
-                <td><?php echo $email;?></td>
-            </tr>
-            <tr align="center">
-                <!-- <th scope="row">2</th>	 -->
-                <td>Phone No.</td>
-                <td><?php echo $phone;?></td>
-            </tr>
-        </tbody>
-    </table>
-    <form action="" method="POSt">
-    <input type="submit" id="notify" class="btn btn-primary ml-3" style="margin-right: 0.75rem;background-color: #12213F!important;" value="Notify Owner" name="notify"/> 
-    </form>
-    <?php echo $dobErr;?>
+    <div class="container">
+		<div class="row">
+            <div class="ct text-center ">
+            <div class="box1">
+                <table class="table borderless">
+                    <h4>Owner Contact Details</h4>
+                    <tbody>
+                        <tr align="center">
+                            <td id="title">Owner Name:</td>
+                            <td id="sub"><?php echo $fname." ".$lname;?></td>
+                        </tr>
+                        <tr align="center">
+                            <td id="title">Email:</td>
+                            <td id="sub"><?php echo $email;?></td>
+                        </tr>
+                        <tr align="center">
+                            <td id="title">Phone No.:</td>
+                            <td id="sub"><?php echo $phone;?></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <form action="" method="POSt">
+                    <input type="submit" id="notify" class="btn btn-primary ml-3" style="margin-right: 0.75rem;background-color: #12213F!important;" value="Notify Owner" name="notify"/> 
+                </form>
+                <?php echo $dobErr;?>
+            </div>
+            </div>
+        </div>
     </div>
     </body>
 </html>

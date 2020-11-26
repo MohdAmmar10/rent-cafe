@@ -151,92 +151,101 @@
 	</nav>
 	<!-- <div > -->
 	<form class="row container_form" id="addpost" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" enctype="multipart/form-data" method="POST">
-            <div class="form_left col-sm-0 col-md-6 col-6">    
-			<h2 class="mt-3" >Rent your Property</h4>
-			<div class="mt-4">
-				<label for="size">&emsp;Size: </label>
-				<input type="text" name="size" id="size" placeholder=" Appartment Size" autofocus autocomplete="OFF">
+		<div class="form_left col-sm-0 col-md-5 col-5">    
+			<h2 class="mt-3 mb-3" >Rent your Property</h4>
+			<div class="container">
+				<table id="table1"; cellspacing="5px" cellpadding="5%";>
+					<tr>
+						<td><label for="size">&emsp;Size: </label></td>
+						<td><input type="text" name="size" id="size" placeholder=" Appartment Size" autofocus autocomplete="OFF">
+					</tr>
+					<tr>
+						<td><label for="area">&emsp;Area: </label></td>
+						<td><input type="number" name="area" id="area" placeholder=" Covered Area sq.ft." autocomplete="OFF"></td>
+					</tr>
+					<tr>
+						<td><label for="price">&emsp;Price: </label></td>
+						<td><input type="number" name="price" id="price" placeholder=" Enter Monthly Rent"  autocomplete="OFF"></td>
+					</tr>
+					<tr>
+						<td><label for="location">&emsp;Location: </label></td>
+						<td><input type="text" name="location" id="location" placeholder=" Location"  autocomplete="OFF"></td>
+					</tr>
+					<tr>
+						<td><label for="address">&emsp;Address: </label></td>
+						<td><input type="text" name="address" id="address" placeholder=" Address" autocomplete="OFF"><td>
+					</tr>
+					<tr>
+						<td><label for="description">&emsp;Description: </label><td>
+						<textarea  name="description" id="description" form="addpost"></textarea>
+					</tr>
+					<tr>
+						<td>Select Cover Image to Upload:</td>
+						<td><input type="file" name="file1"></td>
+						<!-- <input type="submit" name="img1" value="Upload"> -->
+					<!-- </form> -->
+					</tr>
+					<tr>
+						<td>Select Image 1 to Upload:</td>
+						<td><input type="file" name="file2"></td>
+						<!-- <input type="submit" name="img2" value="Upload"> -->
+					<!-- </form> -->
+					</tr>
+				</table>
 			</div>
-			<div class="mt-3">
-				<label for="area">&emsp;Area: </label>
-				<input type="number" name="area" id="area" placeholder=" Covered Area sq.ft." autocomplete="OFF">
-			</div>
-			<div class="mt-3">
-				<label for="price">&emsp;Price: </label>
-				<input type="number" name="price" id="price" placeholder=" Enter Monthly Rent"  autocomplete="OFF">
-			</div>
-			<div class="mt-3">
-				<label for="location">&emsp;Location: </label>
-				<input type="text" name="location" id="location" placeholder=" Location"  autocomplete="OFF">
-			</div>
-			<div class="mt-3">
-				<label for="address">&emsp;Address: </label>
-				<input type="text" name="address" id="address" placeholder=" Address" autocomplete="OFF">
-			</div>
-			<div class="mt-3">
-				<label for="description">&emsp;Description: </label>
-				<textarea  name="description" id="description" form="addpost">	</textarea>
-			</div>
-			<div class="mt-3">
-			<label for="trans" id="l1">Nearest to public transport?</label>
-			<label class="rad">
-			<input type="radio" name="trans" value="yes">&emsp;<span class="checkmark"></span>						</label><span class="rad_label">Yes</span>
-			<label class="rad">
-			<input type="radio" name="trans" value="no">&emsp;<span class="checkmark"></span>						</label><span class="rad_label">No</span>
-			</div>
-            </div>
-            <div class="form_right mt-5 pt-5 col-sm-12 col-md-6 col-6 ">
+        </div>
+            <div class="form_right mt-5 pt-5 col-sm-12 col-md-7 col-7 ">
+			<table id="table2"; cellspacing="5px" cellpadding="5%";>
+				<tr>
+					<td><label for="trans" id="l1">Nearest to public transport?</label></td>
+					<td><label class="rad">
+						<input type="radio" name="trans" value="yes">&emsp;<span class="checkmark"></span>						
+						</label><span class="rad_label">Yes</span></td>
+					<td><label class="rad">
+						<input type="radio" name="trans" value="no">&emsp;<span class="checkmark"></span>						
+						</label><span class="rad_label">No</span></td>
+				</tr>
+				<tr>
+					<td><label for="problem" id="l1">Rectifying Problems?</label></td>
+					<td><label class="rad">
+						<input type="radio" name="problem" value="owner">&emsp;<span class="checkmark"></span>
+						</label><span class="rad_label">Owner</span></td>
+					<td><label class="rad">
+						<input type="radio" name="problem" value="you">&emsp;<span class="checkmark"></span>
+						</label><span class="rad_label">You</span></td>
+				</tr>
+				<tr>
+					<td><label for="ammenty" id="l1">What ammentites you want?</label></td>
+					<td><label class="checkbox-inline">
+						<input type="checkbox" id="customCheck" value="wifi" name="ammentites1">&emsp;
+						</label><span class="rad_label">WIFI</span></td>
+					<td><label class="checkbox-inline">
+						<input type="checkbox" id="customCheck" value="ac" name="ammentites2">&emsp;
+						</label><span class="rad_label">AC</span></td>
+					<td><label class="checkbox-inline">
+						<input type="checkbox" id="customCheck" value="tv" name="ammentites3">&emsp;
+						</label><span class="rad_label">TV</span></td>
+				</tr>
+				<tr>
+					<td><label for="lift" id="l1">Lift:</label>&emsp;
+					<td><label class="rad">
+						<input type="radio" name="lift" value="yes">&emsp;<span class="checkmark"></span>
+						</label><span class="rad_label">Yes</span></td>
+					<td><label class="rad">
+						<input type="radio" name="lift" value="no">&emsp;<span class="checkmark"></span>
+						</label><span class="rad_label">No</span></td>
+				</tr>
+				<tr>
+					<td><label for="furniture" id="l1">Furnished:</label></td>
+					<td><label class="rad">
+						<input type="radio" name="furniture" value="yes">&emsp;<span class="checkmark"></span>
+						</label><span class="rad_label">Yes</span></td>
+					<td><label class="rad">
+						<input type="radio" name="furniture" value="no">&emsp;<span class="checkmark"></span>
+						</label><span class="rad_label">No</span></td>
+				</tr>
+			</table>
 				
-				<div class="mt-3">
-				<label for="problem" id="l1">Rectifying Problems?</label>
-				<label class="rad">
-				<input type="radio" name="problem" value="owner">&emsp;<span class="checkmark"></span>
-				</label><span class="rad_label">Owner</span>
-				<label class="rad">
-				<input type="radio" name="problem" value="you">&emsp;<span class="checkmark"></span>
-				</label><span class="rad_label">You</span>
-				</div>
-				<div class="mt-3">
-				<label for="ammenty" id="l1">What ammentites you want?</label>
-				<label class="checkbox-inline">
-				<input type="checkbox" id="customCheck" value="wifi" name="ammentites1">&emsp;
-				</label><span class="rad_label">WIFI</span><label class="checkbox-inline">
-				<input type="checkbox" id="customCheck" value="ac" name="ammentites2">&emsp;
-				</label><span class="rad_label">AC</span>
-				<label class="checkbox-inline">
-				<input type="checkbox" id="customCheck" value="tv" name="ammentites3">&emsp;
-				</label><span class="rad_label">TV</span>
-				</div>
-				<div class="mt-3">
-				<label for="lift" id="l1">Lift:</label>&emsp;
-				<label class="rad">
-				<input type="radio" name="lift" value="yes">&emsp;<span class="checkmark"></span>
-				</label><span class="rad_label">Yes</span>
-				<label class="rad">
-				<input type="radio" name="lift" value="no">&emsp;<span class="checkmark"></span>
-			</label><span class="rad_label">No</span>
-				</div>
-				<div class="mt-3">
-				<label for="furniture" id="l1">Furnished:</label>
-				<label class="rad">
-				<input type="radio" name="furniture" value="yes">&emsp;<span class="checkmark"></span>
-				</label><span class="rad_label">Yes</span>
-				<label class="rad">
-				<input type="radio" name="furniture" value="no">&emsp;<span class="checkmark"></span>
-			</label><span class="rad_label">No</span>
-				</div>
-				<div class="mt-3">
-					Select Cover Image to Upload:
-					<input type="file" name="file1">
-					<!-- <input type="submit" name="img1" value="Upload"> -->
-				<!-- </form> -->
-				</div>
-				<div class="mt-3">
-					Select Image 1 to Upload:
-					<input type="file" name="file2">
-					<!-- <input type="submit" name="img2" value="Upload"> -->
-				<!-- </form> -->
-				</div>
 				<div class="mt-3">
 					Select Image 2 to Upload:
 					<input type="file" name="file3">
@@ -249,14 +258,11 @@
 					<!-- <input type="submit" name="img4" value="Upload"> -->
 				<!-- </form> -->
 				</div>
-				
-				      <div class="subm">
-                        &emsp;&emsp;&emsp;&emsp;
-                        <input type="submit" class="btn btn-primary cl" id="submit" name="submit" value="Submit">
-                    </div>
+				<div class="subm"><br><br><br>
+                    <input type="submit" class="btn btn-primary cl" id="submit" name="submit" value="Submit">
+				</div>
 			</div>
 			</form> 
         <!-- </div>  -->
-
 	</body>
 </html>
