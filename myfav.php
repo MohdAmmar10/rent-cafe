@@ -99,7 +99,7 @@
                     <h5>₹ <?php echo $row["price"];?></h5>
                     <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
                         <input type="hidden" name="pid" value="<?php echo $row['pid']; ?>"/>
-                        <input class="cn-bt" id="myModal" value="Contact Now" type="submit" name="contact" data-toggle="modal" data-target="#exampleModalCenter"/>
+                        <a href="contact.php?id=<?php echo $row["pid"];?>" class="cn-bt" >Contact Now</a>
                         <!-- Modal -->
                         <a href="deletefav.php?id=<?php echo $row["pid"];?>" class="btn btn-primary ml-3" style="margin-right: 0.75rem;background-color: #12213F!important;">Delete</a>
                     </form>

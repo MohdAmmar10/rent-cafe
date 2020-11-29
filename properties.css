@@ -50,7 +50,9 @@
 a.custom-card,a.custom-card:hover {
     color: inherit;
   }
-
+#mylistt{
+  margin-left: 200px !important;
+}
   #myModal,#exampleModalCenter {
     -webkit-transform: translate3d(0, 0, 0);
   }

@@ -49,16 +49,16 @@
     		</ul>
   		</div>
 	</nav>
-	<div class="container pb-5 pr-0" id="new_btn">
-		<div class="row mt-4 mx-4">
-			<div class="col-md-8">
-				<h2 class="font-weight-bold mb-2 text-left">My Listing</h2>
+	<div class="d-flex justify-content-between container ml-5 pl-5 mt-4 pb-5" id="new_btn">
+		<!-- <div class="row mt-4 mx-4"> -->
+			<div class="ml-5 pl-5">
+				<h2 id="mylistt" class="font-weight-bold mb-2 ml-5 pl-5">My Listing</h2>
 			</div>
-			<div class="col-md-4">
+			<div class="">
 				<a href="addnew.php" class="btn btn-primary" style="background-color: #12213F!important;">
 				<i class="fa fa-plus" aria-hidden="true"></i>Add New</a>
 			</div>
-		</div>
+		<!-- </div> -->
 	</div>
 	<div class="container pb-5 pt-2">
 		<!-- First Row [Prosucts]-->

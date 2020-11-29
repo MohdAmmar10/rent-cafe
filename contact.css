@@ -15,6 +15,7 @@
 	-moz-box-shadow: 11px 11px 11px -6px rgba(18,33,63,0.31);
 	box-shadow: 11px 11px 11px -6px rgba(18,33,63,0.31);
 }
+
 table{
 	border: 0;
     outline: 0;
@@ -28,7 +29,7 @@ h4{
 	color: #12213F;
 	text-align: center;
 }
-#title{
+#title,p{
 	font-size: medium;
 	font-weight: bold;
 	color: #12213F;

@@ -27,9 +27,6 @@
         			<a class="nav-link" href="home.php" style="margin-right: 1.2rem; font-weight: bold;">HOME</a>
       			</li>
       			<li class="nav-item">
-        			<a class="nav-link" href="solution.html" style="margin-right: 1.2rem; font-weight: bold;">HOW IT WORKS</a>
-      			</li>
-      			<li class="nav-item">
         			<a class="nav-link" href="properties.php" style="margin-right: 1.2rem; font-weight: bold;">PROPERTIES</a>
 				</li>
 				<?php if(isset($_COOKIE['EMAIL'])) : ?>
@@ -71,7 +68,12 @@
 							Everything you need to get your  Home<br>
 							Faster & Easier
 						</p>
-						<a href="#" id="hbtn" class="btn btn-primary">How It Works?</a>
+						<?php if(isset($_COOKIE['EMAIL'])) : ?>
+							<a href="properties.php" id="hbtn" class="btn btn-primary">All Properties</a>
+							<a href="mylist.php" id="hbtn" class="btn btn-primary">My Listings</a>
+						<?php else : ?>
+							<a href="properties.php" id="hbtn" class="btn btn-primary">See All Properties</a>
+						<?php endif; ?>
 					</div>
 				</div>		
 			</div>

@@ -1,7 +1,7 @@
 <?php session_start();?>
 <html>
 <head>
-    <link rel="stylesheet" href="contact.css">
+    <link rel="stylesheet" href="notify.css">
 	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://code.jquery.com/jquery-3.5.1.slim.js" integrity="sha256-DrT5NfxfbHvMHux31Lkhxg42LY6of8TaYyK50jnxRnM=" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
@@ -49,6 +49,7 @@
     		</ul>
   		</div>
 	</nav>
+	<h4>Notifications for you</h4>
     <?php
     $server = "localhost";
     $username = "root";
@@ -79,9 +80,11 @@
                 // $small_addr=$row1["small_addr"];
             
     ?>
-    <div class="border">
-            <p>User <?php echo $useremail;?> is intersted in your <?php echo $row["size"];?> property at <?php echo $row["small_addr"];?></p>
-    </div>
+    <div class="box mx-auto my-3 ">
+		<!-- <center> -->
+            <p class="text-center mx-auto">User <?php echo $useremail;?> is intersted in your <?php echo $row["size"];?> property at <?php echo $row["small_addr"];?></p>
+			<!-- </center> -->
+	</div>
         <?php
 }}}}
         else{ ?>
