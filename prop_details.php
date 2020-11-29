@@ -80,7 +80,14 @@
             </div>
             <div class="text-right col-sm-3 mt-2 ">
                 <h4 class="font-weight-bold mb-4">₹ <?php echo $row["price"];?></h4>
+                <?php if(isset($_COOKIE["EMAIL"])) : ?>
                 <a href="contact.php?id=<?php echo $row["pid"];?>" class="cn-bt" >Contact Owner</a>
+                <?php else: ?>
+                <p> To Contact Owner
+                <a href="login.php">Login </a> /
+                <a href="signup.php">SignUp </a>
+                
+                <?php endif; ?>
             </div>
         </div>
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">

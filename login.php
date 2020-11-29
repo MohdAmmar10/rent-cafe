@@ -21,7 +21,8 @@
       {
         $email = test_input($_POST["email"]);
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-          $emailErr = "Invalid email format";
+          $flag=1;
+          $emailErr = "Invalid Login credentials";
         }
       }
 
@@ -38,12 +39,13 @@
 
         if(!$uppercase || !$lowercase || !$number || strlen($password) < 8) 
         {
+        
         $passErr="Invalid Login credentials";
         }
       }
       if($emailErr == "" && $passErr == "" && isset($_POST['clear']))
       {
-          setcookie('EMAIL',$_POST['email'],time()+ 3600);
+          
           $server = "localhost";
           $username = "root";
           $passwrd = "";
@@ -62,6 +64,7 @@
             {
               if(password_verify($password, $row["password"]))
               {
+                setcookie('EMAIL',$_POST['email'],time()+ 3600);
                 header("Location: home.php");
               }
             }
@@ -98,9 +101,7 @@
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
         <label for="email">Email&emsp;&emsp;</label>
         <input type="text" name="email" placeholder="Enter Email" autocomplete="OFF">
-        <span class="error">*<br><?php 
-        if($_SERVER["REQUEST_METHOD"]=="POST"){ 
-        echo $emailErr;}?></span>
+        <br>
         <br>
         <label for="pass">Password </label>
         <input type="password" id="pass" name="pass" placeholder="Enter Password" autocomplete="OFF">
