@@ -2,6 +2,7 @@
 <html>
 <head>
     <link rel="stylesheet" href="properties.css">
+	<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://code.jquery.com/jquery-3.5.1.slim.js" integrity="sha256-DrT5NfxfbHvMHux31Lkhxg42LY6of8TaYyK50jnxRnM=" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
@@ -9,7 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-	<nav class="navbar sticky-top navbar-expand-md navbar-light bg-light">
+<nav class="navbar sticky-top navbar-expand-md navbar-light bg-light">
   		<img src="asset/Logo.svg">
   		<button class="navbar-toggler" data-toggle="collapse" data-target="#navlinks" aria-label="Togglenavigation">
     		<span class="navbar-toggler-icon"></span>
@@ -18,9 +19,6 @@
     		<ul class="navbar-nav ml-auto">
       			<li class="nav-item">
         			<a class="nav-link" href="home.php" style="margin-right: 1.2rem; font-weight: bold;">HOME</a>
-      			</li>
-      			<li class="nav-item">
-        			<a class="nav-link" href="solution.html" style="margin-right: 1.2rem; font-weight: bold;">HOW IT WORKS</a>
       			</li>
       			<li class="nav-item">
         			<a class="nav-link" href="properties.php" style="margin-right: 1.2rem; font-weight: bold;">PROPERTIES</a>
@@ -34,6 +32,9 @@
 					</li>	
 					<li class="nav-item">
 						<a href="profile.php" class="nav-link" style="margin-right: 1.2rem; font-weight: bold;"><?php echo $_COOKIE['EMAIL'];?></a>
+					</li>
+					<li class="nav-item">
+						<a href="notifications.php" class="nav-link" style="margin-right: 1.2rem; font-weight: bold;"><i class="fas fa-bell"></i></a>
 					</li>
 					<li class="nav-item">
 						<a href="delete.php" class="btn btn-primary" style="background-color: #12213F!important;">LOGOUT</a>

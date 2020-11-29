@@ -38,7 +38,7 @@
 
         if(!$uppercase || !$lowercase || !$number || strlen($password) < 8) 
         {
-        $passErr="Wrong Pa";
+        $passErr="Invalid Login credentials";
         }
       }
       if($emailErr == "" && $passErr == "" && isset($_POST['clear']))
