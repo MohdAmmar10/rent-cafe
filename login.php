@@ -22,7 +22,7 @@
         $email = test_input($_POST["email"]);
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
           $flag=1;
-          $emailErr = "Invalid Login credentials";
+          $passErr = "Invalid Login credentials";
         }
       }
 
@@ -101,7 +101,7 @@
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
         <label for="email">Email&emsp;&emsp;</label>
         <input type="text" name="email" placeholder="Enter Email" autocomplete="OFF">
-        <br>
+        <span class="error">*<br><?php if($_SERVER["REQUEST_METHOD"]=="POST"){ echo $emailErr;}?></span>
         <br>
         <label for="pass">Password </label>
         <input type="password" id="pass" name="pass" placeholder="Enter Password" autocomplete="OFF">
