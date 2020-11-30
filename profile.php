@@ -1,4 +1,4 @@
-<?php session_start();?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,8 +11,24 @@
 	<?php 
 		if(isset($_COOKIE['EMAIL']))
 		{
-			$_SESSION["email"] =  $_COOKIE['EMAIL'];	
+			$email =  $_COOKIE['EMAIL'];	
 		}
+		  $server = "localhost";
+          $username = "root";
+          $passwrd = "";
+          $dbname = "rent_cafe";
+		  $conn = mysqli_connect($server, $username, $passwrd, $dbname);
+		  $query = "SELECT fname,lname,gender,dob,phone,city from client_details where email='$email'";
+		  $result = mysqli_query($conn,$query);
+		  $count = mysqli_num_rows($result);
+		  $row = mysqli_fetch_assoc($result);
+          $fname=$row['fname'];
+		  $lname=$row['lname'];
+		  $gender=$row['gender'];
+		  $dob=$row['dob'];
+		  $phone=$row['phone'];
+		  $city=$row['city'];
+          
 	?>
 </head>
 <body>
@@ -67,24 +83,24 @@
                 <div class="data">
 	            
 	                <label for="fn">&emsp;&emsp;Name&emsp; </label>
-	                <span><?php echo $_SESSION["fname"]." ".$_SESSION["lname"];?></span>
+	                <span><?php echo $fname." ".$lname;?></span>
 	       
                     <br>
                     
                     <label for="gender">&emsp;&emsp;Gender</label>&emsp;
-                    <span><?php echo $_SESSION["gender"];?></span>
+                    <span><?php echo $gender;?></span>
                    
                     <br>
                     <label for="dob">Date of Birth</label>
-                    <span><?php echo $_SESSION["dob"];?></span>
+                    <span><?php echo $dob;?></span>
 
                     <br>
                     <label for="pn">&emsp;&emsp;Phone&emsp;</label>
-                    <span><?php echo $_SESSION["phone"];?></span>
+                    <span><?php echo $phone;?></span>
 
                     <br>
                     <label for="ct">&emsp;&emsp;&emsp;City&emsp;</label>
-                    <span><?php echo $_SESSION["city"];?></span>
+                    <span><?php echo $city;?></span>
 
                     <br>
                     <div class="subm">
